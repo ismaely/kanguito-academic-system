@@ -9,9 +9,12 @@
 """
 
 from django.contrib import admin
-from arquivo.models import Arquivo, Tipologia
+from arquivo.models import Arquivo, Tipologia, Categoria_Partilha
 # Register your models here.
 
-
 class ArquivoAdmin(admin.ModelAdmin):
-    list_display =('autor', 'titulo','tipologia', 'partiilha','data')
+    list_display = ('titulo','autor', 'numero_pagina', 'tipologia', 'partilha', 'data')
+
+admin.site.register(Tipologia)
+admin.site.register(Categoria_Partilha)
+admin.site.register(Arquivo, ArquivoAdmin)
