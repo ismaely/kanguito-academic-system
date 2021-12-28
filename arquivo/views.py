@@ -58,7 +58,7 @@ def atualizar_arquivos(request, pk):
             return HttpResponseRedirect(reverse('arquivo:listar-arquivos'))
     #print(form.errors)
     context = {'form': form, 'pk': resp.id }
-    return render (request, 'arquivos/registar_arquivos.html', context)
+    return render (request, 'arquivos/adicionar_arquivo.html', context)
 
 
 #@login_required
@@ -72,4 +72,4 @@ def registar_arquivos(request):
             return HttpResponseRedirect(reverse('secretaria:home'))
     #print(form.errors)
     context = {'form': form}
-    return render (request, 'arquivos/registar_arquivos.html', context)
+    return render (request, 'arquivos/adicionar_arquivo.html', context)

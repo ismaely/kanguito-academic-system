@@ -1,0 +1,80 @@
+{% extends 'home_base.html' %}{% block corpo %}{% load static %}
+<div class="row">
+  <div class="col-md-1"></div>
+  <div class="col-md-9">
+    <div class="card" style="min-height: 484px">
+      {% if pk is not null %}
+      <div class="card-header"><h3>Editar Dados do Arquivo</h3></div>
+      <div class="card-body">
+        <form class="forms-sample" action="{% url 'arquivo:atualizar-arquivos' pk %}" method="POST">
+        {% else %}
+        <div class="card-header"><h3>Adicionar Novo Arquivo</h3></div>
+        <div class="card-body">
+          <form class="forms-sample" action="{% url 'arquivo:registar-arquivos' %}" method="POST">
+            {% endif %} {% csrf_token %} {% autoescape on %}
+            <div class="row">
+              <div class="col-sm-6">
+            <div class="form-group">
+              <label for="" class="">Titulo</label>
+              {{ form.titulo }}{{ form.titulo.errors }}
+            </div>
+            </div>
+              <div class="col-sm-6">
+            <div class="form-group ">
+              <label for="" class="">Autor</label>
+             {{ form.autor }}{{ form.autor.errors }}
+            </div>
+            </div>
+          </div>
+
+            <div class="row">
+              <div class="col-sm-6">
+            <div class="form-group">
+              <label for="" class="">Núsmero de Pagina</label>
+              {{ form.numero_pagina }}{{ form.numero_pagina.errors }}
+            </div>
+            </div>
+              <div class="col-sm-6">
+            <div class="form-group ">
+              <label for="" class="">Categoria</label>
+             {{ form.tipologia }}{{ form.tipologia.errors }}
+            </div>
+            </div>
+          </div>
+          <div class="row">
+              <div class="col-sm-6">
+            <div class="form-group">
+              <label for="" class="">Data de Criação</label>
+              {{ form.data }}{{ form.data.errors }}
+            </div>
+            </div>
+              <div class="col-sm-6">
+            <div class="form-group ">
+              <label for="" class="">Tipo de Partilha</label>
+             {{ form.partilha }}{{ form.partilha.errors }}
+            </div>
+            </div>
+          </div>
+
+           <div class="row">
+              <div class="col-sm-12">
+            <div class="form-group">
+              <label for="" class="">Arquivo</label>
+              {{ form.arquivo }}{{ form.arquivo.errors }}
+            </div>
+            </div>
+             
+          </div>
+
+            <div class="form-group">
+              <div id="visitfromworld" style="width: 100%; height: 20px"></div>
+            </div>
+            <button type="submit" class="btn btn-primary mr-2" style="width: 40%; height: 38px">SALVAR</button>
+            {% endautoescape %}
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  {% endblock %}
+</div>
