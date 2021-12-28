@@ -8,7 +8,7 @@
       <div class="card-body">
         <form class="forms-sample" action="{% url 'unidade_curricular:editar-UnidadeCurricular' pk %}" method="POST">
         {% else %}
-        <div class="card-header"><h3>Adicionar Nova Unidade Curricular {{ pk }}</h3></div>
+        <div class="card-header"><h3>Adicionar Nova Unidade Curricular</h3></div>
         <div class="card-body">
           <form class="forms-sample" action="{% url 'unidade_curricular:nova-unidadeCurricular' %}" method="POST">
             {% endif %} {% csrf_token %} {% autoescape on %}
