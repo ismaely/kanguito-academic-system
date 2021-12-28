@@ -56,7 +56,7 @@ def atualizar_arquivos(request, pk):
             form.save()
             sweetify.success(request,'Arquivo Atualizado com sucesso!....', timer='4900', button='Ok')
             return HttpResponseRedirect(reverse('arquivo:listar-arquivos'))
-    #print(form.errors)
+    
     context = {'form': form, 'pk': resp.id }
     return render (request, 'arquivos/adicionar_arquivo.html', context)
 
@@ -69,7 +69,8 @@ def registar_arquivos(request):
         if form.is_valid():
             form.save()
             sweetify.success(request,'Arquivo Registado com sucesso!....', timer='4900', button='Ok')
-            return HttpResponseRedirect(reverse('secretaria:home'))
+            form = Arquivo_Form()
+        
     #print(form.errors)
     context = {'form': form}
     return render (request, 'arquivos/adicionar_arquivo.html', context)

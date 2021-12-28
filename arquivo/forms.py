@@ -5,7 +5,7 @@ from arquivo.models import Arquivo
 
 class Arquivo_Form(ModelForm):
     class Meta:
-        arquivo = forms.CharField(widget=forms.TextInput(attrs={'type': 'file','class': 'file-upload-default'}))
+        arquivo = forms.FileField()
         model = Arquivo
         fields = ['titulo', 'autor', 'numero_pagina', 'tipologia', 'data', 'partilha', 'arquivo']
         widgets = {
