@@ -1,0 +1,55 @@
+<!--
+@author [Gunza Ismael]
+@email [7ilip@gmail.com]
+@create date 2021-09-26 12:33:14
+@modify date 2021-12-27 11:41:44
+@desc [description]
+-->
+
+{% extends 'home_base.html' %}{% block corpo %}{% load static %}
+<div class="card">
+  <div class="card-header row"><h3>Lista das Unidade Curricular</h3></div>
+  <div class="card-body">
+    <table id="advanced_table" class="table">
+      <thead>
+        <tr>
+          <th>Id</th>
+          <th>Nome</th>
+          <th>Sigla</th>
+          <th>Carga Horária</th>
+          <th>Codigo</th>
+          <th>Opção</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for item in lista %}
+        <tr>
+          <td>{{ item.id }}</td>
+          <td>{{ item.nome }}</td>
+          <td>{{ item.sigla }}</td>
+          <td>{{ item.carga_horaria }}h</td>
+          <td>{{ item.codigo }}</td>
+          <td>
+            <ul class="nav nav-pills">
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"
+                  >Acção <i class="ik ik-chevron-down"></i
+                ></a>
+                <div class="dropdown-menu">
+                  <a class="dropdown-item" href="{% url 'unidade_curricular:editar-UnidadeCurricular' item.id %}">Editar</a>
+                  <a class="dropdown-item" href="#">Desativar</a>
+                  <a class="dropdown-item" href="#">Ativar</a>
+                  <div class="dropdown-divider"></div>
+                </div>
+              </li>
+            </ul>
+          </td>
+          <td></td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock %}
