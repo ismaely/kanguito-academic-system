@@ -1,10 +1,11 @@
 from django.shortcuts import render
-from django.http import HttpResponseRedirect, JsonResponse,  HttpResponse
+from django.http import HttpResponseRedirect, JsonResponse, FileResponse, HttpResponse
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login, logout
 from django.db.models import Q
 from django.urls import reverse
-import  sweetify
+import  sweetify, os
+from django.conf import settings
 from arquivo.models import Arquivo, Tipologia
 from arquivo.forms import Arquivo_Form, ConsultarForm
 
@@ -12,8 +13,17 @@ from arquivo.forms import Arquivo_Form, ConsultarForm
 #@login_required
 def visualizar_arquivo(request, pk):
     resp = Arquivo.objects.get(id=pk)
-    context = {'lista': resp}
-    return render (request, 'arquivos/visualizar_arquivo.html', context)
+    filepath = os.path.join(settings.MEDIA_ROOT)
+    nome = resp.arquivo
+    files = filepath +"/"+str(nome)
+    print(files)
+    with open(filepath +"/"+str(nome), 'r') as pdf:
+        response = HttpResponse(pdf.read(), content_type='application/pdf')
+        response['Content-Disposition'] = 'inline;filename='+nome+'.pdf'
+        return response
+    pdf.closed
+    #context = {'lista': resp, 'nome':filepath +"/"+str(nome)}
+    #return render (request, 'arquivos/visualizar_arquivo.html', context)
 
 
 #@login_required
