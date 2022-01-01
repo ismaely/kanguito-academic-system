@@ -24,3 +24,5 @@ class Livro(models.Model):
         ordering = ['titulo']
     def __str__ (self):
         return self.id
+        
+        
