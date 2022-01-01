@@ -17,13 +17,13 @@ def visualizar_arquivo(request, pk):
     nome = resp.arquivo
     files = filepath +"/"+str(nome)
     print(files)
-    with open(filepath +"/"+str(nome), 'r') as pdf:
+    """with open(filepath +"/"+str(nome), 'r') as pdf:
         response = HttpResponse(pdf.read(), content_type='application/pdf')
         response['Content-Disposition'] = 'inline;filename='+nome+'.pdf'
-        return response
-    pdf.closed
-    #context = {'lista': resp, 'nome':filepath +"/"+str(nome)}
-    #return render (request, 'arquivos/visualizar_arquivo.html', context)
+        return response"""
+    
+    context = {'lista': resp, 'nome':filepath +"/"+str(nome)}
+    return render (request, 'arquivos/visualizar_arquivo.html', context)
 
 
 #@login_required
