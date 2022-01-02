@@ -25,6 +25,7 @@ urlpatterns = [
     path('ajax/', include('ajax.urls')),
     path('unidade_curricular/', include('unidade_curricular.urls')),
     path('arquivo/', include('arquivo.urls')),
+    path('biblioteca/', include('biblioteca.urls')),
     path('admin/', admin.site.urls),
 
 ]+ static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)

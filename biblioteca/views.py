@@ -6,7 +6,7 @@ from django.db.models import Q
 from django.urls import reverse
 import  sweetify, os
 from django.conf import settings
-from biblioteca.models import Arquivo, Tipologia
+from biblioteca.models import Livro
 from biblioteca.forms import Livro_Form
 
 
@@ -14,7 +14,7 @@ from biblioteca.forms import Livro_Form
 
 
 #@login_required
-def cadastrar_obra_literaria(request):
+def adicionarNova_obraLiteraria(request):
     form = Livro_Form(request.POST or None)
     if request.method == "POST":
         if form.is_valid():
@@ -24,5 +24,5 @@ def cadastrar_obra_literaria(request):
             form = Livro_Form()
     #print(form.errors)
     context = {'form': form}
-    return render (request, 'biblioteca/cadastrar_livro.html', context)
+    return render (request, 'biblioteca/adicionarNova_obraLiteraria.html', context)
 
