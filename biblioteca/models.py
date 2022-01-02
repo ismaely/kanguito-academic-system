@@ -18,6 +18,7 @@ class Livro(models.Model):
     data_publicacao = models.DateField()
     created = models.DateTimeField(auto_now=True)
     updated = models.DateTimeField(auto_now_add=True)
+    arquivo = models.FileField(upload_to="livro/%Y/")
 
     class Meta:
         ordering = ['titulo']

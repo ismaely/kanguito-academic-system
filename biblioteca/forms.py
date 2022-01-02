@@ -7,7 +7,7 @@ from biblioteca.models import Livro
 class Livro_Form(ModelForm):
     class Meta:
         model = Livro
-        fields = ['titulo', 'autor', 'numero_pagina', 'isbn', 'data_entrada', 'data_publicacao']
+        fields = ['categoria','titulo', 'autor', 'numero_pagina', 'isbn', 'data_entrada', 'data_publicacao']
         widgets = {
             'titulo': forms.TextInput(attrs={'class': 'form-control'}),
             'autor': forms.TextInput(attrs={'class': 'form-control'}),
@@ -15,6 +15,7 @@ class Livro_Form(ModelForm):
             'isbn': forms.TextInput(attrs={'class': 'form-control'}),
             'data_entrada': forms.TextInput(attrs={'type':'date', 'class': 'form-control'}),
             'data_publicacao': forms.Select(attrs={'class': 'form-control'}),
+            'categoria': forms.Select(attrs={'class': 'form-control'}),
         }
 
 """
