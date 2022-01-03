@@ -17,6 +17,7 @@ from biblioteca.forms import Livro_Form
 def adicionarNova_obraLiteraria(request):
     form = Livro_Form(request.POST or None)
     if request.method == "POST":
+        form = Livro_Form(request.POST, request.FILES)
         if form.is_valid():
             form.save()
             sweetify.success(request,'Inserido com sucesso!..', timer='4900', button='Ok')

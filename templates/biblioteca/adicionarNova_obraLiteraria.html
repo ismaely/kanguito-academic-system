@@ -42,16 +42,26 @@
               <div class="row">
                 <div class="col-sm-6">
                   <div class="form-group">
-                    <label for="" class="">Data de Criação</label>
-                    {{ form.data }}{{ form.data.errors }}
+                    <label for="" class="">Isban:</label>
+                    {{ form.isbn }}{{ form.isbn.errors }}
                   </div>
                 </div>
                 <div class="col-sm-6">
                   <div class="form-group ">
-                    <label for="" class="">Tipo de Partilha</label>
-                    {{ form.partilha }}{{ form.partilha.errors }}
+                    <label for="" class="">Data de publicação</label>
+                    {{ form.data_publicacao }}{{ form.data_publicacao.errors }}
                   </div>
                 </div>
+              </div>
+
+              <div class="row">
+                <div class="col-sm-6">
+                  <div class="form-group">
+                    <label for="" class="">Data de Entrada</label>
+                    {{ form.data_entrada }}{{ form.data_entrada.errors }}
+                  </div>
+                </div>
+                
               </div>
 
               <div class="row">
