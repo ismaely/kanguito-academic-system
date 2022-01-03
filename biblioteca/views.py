@@ -7,7 +7,7 @@ from django.urls import reverse
 import  sweetify, os
 from django.conf import settings
 from biblioteca.models import Livro
-from biblioteca.forms import Livro_Form
+from biblioteca.forms import Livro_Form,ConsultarForm
 
 
 # Create your views here.
@@ -17,6 +17,22 @@ def listar_obras(request):
     lista = Livro.objects.select_related('categoria').all().order_by('-titulo')
     context = {'lista':lista}
     return render (request, 'biblioteca/listar_livros.html', context)
+
+
+
+#@login_required
+# função que vai efetuar a consulta dos dads quando for solicitado pela routa
+def consultaObra(request):
+    form = ConsultarForm(request.POST or None)
+    if request.method == "POST":
+        nome = request.POST['nome']
+        lista = Livro.objects.filter(Q(titulo__contains=nome) | Q(autor__contains=nome))
+        context = {'lista': lista}
+        return render (request, 'biblioteca/listar_livros.html', context)
+
+    context = {'form': form}
+    return render (request, 'biblioteca/consultar_obras.html', context)
+
 
 
 #@login_required

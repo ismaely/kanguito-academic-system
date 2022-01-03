@@ -40,3 +40,7 @@ class Solicitacao_Obra_Form(ModelForm):
             return id
         raise forms.ValidationError(" O número do BI não é valido, não existe")
 """
+
+class ConsultarForm(forms.Form):
+    nome = forms.CharField(max_length=100, widget=forms.TextInput(attrs={'class': 'form-control'}))
+    #nome = forms.CharField(max_length=100, widget=forms.TextInput(attrs={'class': 'form-control'}))
