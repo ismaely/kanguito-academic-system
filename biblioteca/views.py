@@ -36,6 +36,22 @@ def consultaObra(request):
 
 
 #@login_required
+def solicitacaoEmpresto_obraLiteraria(request):
+    form = "" #Solicitacao_Obra_Form(request.POST or None)
+    if request.method == "POST":
+        if form.is_valid():
+            aluno = form.cleaned_data.get('aluno')
+            fro = form.save(commit=False)
+            fro.aluno_id = aluno
+            fro.save()
+            sweetify.success(request,'Solicitação efectuada com sucesso!....', timer='4900', button='Ok', footer=SOFIL_WEB)
+            return HttpResponseRedirect(reverse('secretaria:home'))
+    #print(form.errors)
+    context = {'form': form}
+    return render (request, 'biblioteca/registar_solicitacao_obra.html', context)
+
+
+#@login_required
 def atualizar_obra_literaria(request, pk):
     resp = Livro.objects.get(id=pk)
     form = Livro_Form(request.POST or None, instance=resp)
