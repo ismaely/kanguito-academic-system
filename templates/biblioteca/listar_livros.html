@@ -1,36 +1,34 @@
 <!--
 @author [Gunza Ismael]
 @email [7ilip@gmail.com]
-@create date 2021-09-26 12:33:14
-@modify date 2022-01-03 16:47:55
+@create date 2022-01-03 16:46:31
+@modify date 2022-01-03 17:11:24
 @desc [description]
 -->
 
 {% extends 'home_base.html' %}{% block corpo %}{% load static %}
 <div class="card">
-  <div class="card-header row"><h3>Lista de Arquivos Disponivel</h3></div>
+  <div class="card-header row"><h3>Lista de Livros Disponivel</h3></div>
   <div class="card-body">
     <table id="advanced_table" class="table">
       <thead>
         <tr>
-          <th>Autor</th>
           <th>Titulo</th>
-          <th>Tipologia</th>
-          <th>Nº de Paginas</th>
-          <th>Opção Partilha</th>
-          <th>Data</th>
+          <th>Autor</th>
+          <th>Categoria</th>
+          <th>Isban</th>
+          <th>Data de Publicação</th>
           <th class="no-link last"><span class="nobr">Opções</span></th>
         </tr>
       </thead>
       <tbody>
         {% for dados in lista %}
         <tr>
-          <td class="">{{ dados.autor|upper }}</td>
           <td class="">{{ dados.titulo|upper|truncatechars:40 }}</td>
-          <td class="">{{ dados.tipologia|upper }}</td>
-          <td class="">{{ dados.numero_pagina }}</td>
-          <td class="">{{ dados.partilha }}</td>
-          <td class="">{{ dados.data|upper }}</td>
+          <td class="">{{ dados.autor|upper }}</td>
+          <td class="">{{ dados.categoria|upper }}</td>
+          <td class="">{{ dados.isbn }}</td>
+          <td class="">{{ dados.data_publicacao|upper }}</td>
           <td>
             <ul class="nav nav-pills">
               <li class="nav-item dropdown">
@@ -38,8 +36,8 @@
                   >Acção <i class="ik ik-chevron-down"></i
                 ></a>
                 <div class="dropdown-menu">
-                  <a class="dropdown-item" href="{% url 'arquivo:visualizar-arquivo' dados.id %}">VISUALIZAR</a>
-                  <a class="dropdown-item" href="{% url 'arquivo:atualizar-arquivos' dados.id %}">ATUALIZAR</a>
+                  <a class="dropdown-item" href="{% url 'arquivo:visualizar-arquivo' dados.id %}">SOLICITAR EMPRESTADO</a>
+                  <a class="dropdown-item" href="{% url 'biblioteca:atualizar-obra-literaria' dados.id %}">ATUALIZAR</a>
                   <a class="dropdown-item" href="{% url 'arquivo:eliminar-arquivos' dados.id %}">ELIMINAR</a>
                   <div class="dropdown-divider"></div>
                 </div>

@@ -12,6 +12,26 @@ from biblioteca.forms import Livro_Form
 
 # Create your views here.
 
+#@login_required
+def listar_obras(request):
+    lista = Livro.objects.select_related('categoria').all().order_by('-titulo')
+    context = {'lista':lista}
+    return render (request, 'biblioteca/listar_livros.html', context)
+
+
+#@login_required
+def atualizar_obra_literaria(request, pk):
+    resp = Livro.objects.get(id=pk)
+    form = Livro_Form(request.POST or None, instance=resp)
+    if request.method == "POST":
+        if form.is_valid():
+            form.save()
+            sweetify.success(request,'Dados atualizado com sucesso!....', timer='4900', button='Ok')
+            return HttpResponseRedirect(reverse('biblioteca:listar-obras'))
+    #print(form.errors)
+    context = {'form': form, 'pk': resp.id}
+    return render (request, 'biblioteca/adicionarNova_obraLiteraria.html', context)
+
 
 #@login_required
 def adicionarNova_obraLiteraria(request):
@@ -23,7 +43,7 @@ def adicionarNova_obraLiteraria(request):
             sweetify.success(request,'Inserido com sucesso!..', timer='4900', button='Ok')
             #return HttpResponseRedirect(reverse('secretaria:home'))
             form = Livro_Form()
-    #print(form.errors)
+    
     context = {'form': form}
     return render (request, 'biblioteca/adicionarNova_obraLiteraria.html', context)
 
