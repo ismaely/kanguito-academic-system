@@ -1,3 +1,6 @@
 from django.contrib import admin
+from curso.models import Curso
+class CursoAdmin(admin.ModelAdmin):
+    list_display = ('nome','unidade_organica','sigla')
 
-# Register your models here.
+admin.site.register(Curso, CursoAdmin)
