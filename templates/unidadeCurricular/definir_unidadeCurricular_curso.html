@@ -1,0 +1,78 @@
+{% extends 'home_base.html' %}{% block corpo %}{% load static %}
+<div class="row">
+  <div class="col-md-3"></div>
+  <div class="col-md-6">
+    <div class="card" style="min-height: 484px">
+      {% if pk is not null %}
+      <div class="card-header">
+        <h3>Editar Dados do Curso</h3>
+      </div>
+      <div class="card-body">
+        <form class="forms-sample" action="{% url 'curso:atualizar-dadosCurso' pk %}" method="POST" enctype="multipart/form-data">
+          {% else %}
+          <div class="card-header">
+            <h3>Definir as unidade curricular do curso</h3>
+          </div>
+          <div class="card-body">
+            <form class="forms-sample" action="{% url 'unidade_curricular:definir-unidadeCurricular-curso' %}" method="POST" enctype="multipart/form-data">
+              {% endif %} {% csrf_token %} {% autoescape on %}
+              <div class="row">
+                <div class="col-sm-12">
+                  <div class="form-group">
+                    <label for="" class="">Curso<span class="text-danger">*</span></label>
+                    {{ form.curso }}{{ form.curso.errors }}
+                  </div>
+                </div>
+                
+              </div>
+
+              <div class="row">
+                <div class="col-sm-12">
+                  <div class="form-group">
+                    <label for="" class="">Unidade Curricular<span class="text-danger">*</span></label>
+                    {{ form.unidade_curricular }}{{ form.unidade_curricular.errors }}
+                  </div>
+                </div>
+                
+              </div>
+               <div class="row">
+                <div class="col-sm-12">
+                  <div class="form-group">
+                    <label for="" class="">Tremestre<span class="text-danger">*</span></label>
+                    {{ form.tremestre }}{{ form.tremestre.errors }}
+                  </div>
+                </div>
+                
+              </div>
+               <div class="row">
+                <div class="col-sm-12">
+                  <div class="form-group">
+                    <label for="" class="">Ano<span class="text-danger">*</span></label>
+                    {{ form.ano }}{{ form.ano.errors }}
+                  </div>
+                </div>
+                
+              </div>
+              <div class="row">
+                <div class="col-sm-12">
+                  <div class="form-group">
+                    <label for="" class="">Ano Academico<span class="text-danger">*</span></label>
+                    {{ form.ano_academico }}{{ form.ano_academico.errors }}
+                  </div>
+                </div>
+                
+              </div>
+             
+
+              <div class="form-group">
+                <div id="visitfromworld" style="width: 100%; height: 20px"></div>
+              </div>
+              <button type="submit" class="btn btn-primary mr-2" style="width: 40%; height: 38px">ADICIONAR</button>
+              {% endautoescape %}
+            </form>
+          </div>
+      </div>
+    </div>
+  </div>
+  {% endblock %}
+</div>
