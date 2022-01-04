@@ -8,7 +8,7 @@
         <h3>Editar Dados do Curso</h3>
       </div>
       <div class="card-body">
-        <form class="forms-sample" action="{% url 'arquivo:atualizar-arquivos' pk %}" method="POST" enctype="multipart/form-data">
+        <form class="forms-sample" action="{% url 'curso:atualizar-dadosCurso' pk %}" method="POST" enctype="multipart/form-data">
           {% else %}
           <div class="card-header">
             <h3>Adicionar Novo Curso</h3>
@@ -19,7 +19,7 @@
               <div class="row">
                 <div class="col-sm-12">
                   <div class="form-group">
-                    <label for="" class="">Nome</label>
+                    <label for="" class="">Nome<span class="text-danger">*</span></label>
                     {{ form.nome }}{{ form.nome.errors }}
                   </div>
                 </div>
@@ -29,7 +29,7 @@
               <div class="row">
                 <div class="col-sm-12">
                   <div class="form-group">
-                    <label for="" class="">Unidade Organica</label>
+                    <label for="" class="">Unidade Organica<span class="text-danger">*</span></label>
                     {{ form.unidade_organica }}{{ form.unidade_organica.errors }}
                   </div>
                 </div>
@@ -38,7 +38,7 @@
               <div class="row">
                 <div class="col-sm-12">
                   <div class="form-group">
-                    <label for="" class="">Sigla</label>
+                    <label for="" class="">Sigla<span class="text-danger">*</span></label>
                     {{ form.sigla }}{{ form.sigla.errors }}
                   </div>
                 </div>
