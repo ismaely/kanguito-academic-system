@@ -37,6 +37,7 @@ def editarUnidadeCurricular(request, pk):
     return render (request, 'unidadeCurricular/adicionarUnidadeCurricular.html', context)
 
 
+
 def listarUnidadeCurricular(request):
     lista =[]
     lista = UnidadeCurricular.objects.all()

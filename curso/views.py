@@ -41,7 +41,6 @@ def adicionarNovo_cursos(request):
         if form.is_valid():
             curso = form.save()
             sweetify.success(request,'Curso Registado com sucesso!....', timer='4900', button='Ok')
-            #return HttpResponseRedirect(reverse('secretaria:home'))
             form = Curso_Form()
 
     context = {'form': form}
