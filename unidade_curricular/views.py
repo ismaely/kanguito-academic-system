@@ -33,7 +33,6 @@ def editarUnidadeCurricular(request, pk):
     resp = UnidadeCurricular.objects.get(pk=pk)
     form = UnidadeCurricularForm(request.POST or None, instance=resp)
     if request.method == 'POST':
-        print("en.......")
         if form.is_valid():
             form.save()
             sweetify.success(request,'Dados atualizado com sucesso',button='Ok', timer='3100', persistent="Close")

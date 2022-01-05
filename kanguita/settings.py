@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'unidade_curricular',
     'arquivo',
     'biblioteca',
+    'teses',
     
 ]
 
