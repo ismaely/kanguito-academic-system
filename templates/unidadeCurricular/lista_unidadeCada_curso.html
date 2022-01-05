@@ -1,0 +1,40 @@
+<!--
+@author [Gunza Ismael]
+@email [7ilip@gmail.com]
+@create date 2021-09-26 12:33:14
+@modify date 2022-01-05 15:03:04
+@desc [description]
+-->
+
+{% extends 'home_base.html' %}{% block corpo %}{% load static %}
+<div class="card">
+  <div class="card-header row"><h3>Lista das Unidade Curricular</h3></div>
+  <div class="card-body">
+    <table id="advanced_table" class="table">
+      <thead>
+        <tr>
+          <th>Id</th>
+          <th>Curso</th>
+          <th>Unidade Curricular</th>
+          <th>Ano</th>
+          <th>Tremestre</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for item in lista %}
+        <tr>
+          <td>{{ item.id }}</td>
+          <td>{{ item.curso }}</td>
+          <td>{{ item.unidade_curricular }}</td>
+          <td>{{ item.ano }}h</td>
+          <td>{{ item.tremestre }}</td>
+
+          <td></td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock %}
