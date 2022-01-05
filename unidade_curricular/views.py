@@ -2,7 +2,8 @@ from django.shortcuts import render
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 import sweetify
-from unidade_curricular.forms import UnidadeCurricularForm, UnidadeCurricular, UnidadeCurricular_Curso_Form
+from unidade_curricular.models import UnidadeCurricular, UnidadeCurricular_Curso
+from unidade_curricular.forms import (UnidadeCurricularForm, UnidadeCurricular_Curso_Form, listarUnidadeCurricular_cada_curso_Form)
 # Create your views here.
 
 
@@ -15,6 +16,18 @@ def listarUnidadeCurricular(request):
 
 
 
+#@login_required
+def listarUnidadeCurricular_cada_curso(request):
+    form = listarUnidadeCurricular_cada_curso_Form(request.POST or None)
+    if request.method == "POST":
+        curso = request.POST.get('curso')
+        lista = UnidadeCurricular_Curso.objects.select_related('curso').filter(curso_id=curso).order_by('-id')
+        context = {'lista':lista}
+        return render (request, 'unidadeCurricular/lista_unidadeCada_curso.html', context)
+    context = {'form':form}
+    return render (request, 'unidadeCurricular/forms_listar_unidadeCurso.html', context)
+
+
 # Editar dados da unidade curricular 
 def editarUnidadeCurricular(request, pk):
     resp = UnidadeCurricular.objects.get(pk=pk)
@@ -22,7 +35,6 @@ def editarUnidadeCurricular(request, pk):
     if request.method == 'POST':
         print("en.......")
         if form.is_valid():
-            print("salvo..........")
             form.save()
             sweetify.success(request,'Dados atualizado com sucesso',button='Ok', timer='3100', persistent="Close")
             return HttpResponseRedirect(reverse('unidade_curricular:listar-unidadeCurricular'))

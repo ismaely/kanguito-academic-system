@@ -28,3 +28,12 @@ class UnidadeCurricular_Curso_Form(ModelForm):
             'ano': forms.Select(attrs={'class': 'form-control'}),
             'tremestre': forms.Select(attrs={'class': 'form-control'}),
         }
+
+
+class listarUnidadeCurricular_cada_curso_Form(ModelForm):
+    class Meta:
+        model = UnidadeCurricular_Curso
+        fields = ('curso',)
+        widgets = {
+            'curso': forms.Select(attrs={'class': 'form-control'}),
+        }
