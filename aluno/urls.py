@@ -6,5 +6,5 @@ from . import views
 
 app_name = 'aluno'
 urlpatterns = [
-    path('adicionarNovaInscricao/', views.adicionarNovaInscricao, name="adicionar-Inscricao"),
+    path('adicionarNovoCadastro_aluno/', views.adicionarNovoCadastro_aluno, name="adicionarNovoCadastro-aluno"),
 ]

@@ -3,6 +3,8 @@ from django.http import HttpResponseRedirect
 from django.urls import reverse
 import json, sweetify, random, base64
 from environment.env import DATA_HORA_ZONA 
+from aluno.forms import Aluno_Form
+from pessoa.forms import Pessoa_Form
 # Create your views here.
 
 
@@ -28,10 +30,10 @@ def prepara_foto(request):
 
 
 
-def adicionarNovaInscricao(request):
+def adicionarNovoCadastro_aluno(request):
     pass
     form = Pessoa_Form(request.POST or None)
-    form2 = Inscricao_Form(request.POST or None)
+    form2 = Aluno_Form(request.POST or None)
     if request.method == 'POST':
         form = Pessoa_Form(request.POST, request.FILES or None)
         if form.is_valid() and form2.is_valid():
@@ -48,8 +50,8 @@ def adicionarNovaInscricao(request):
             dados.save()
             sweetify.success(request, 'Dados registado com sucesso!....', button='Ok', timer='3100', persistent="Close")
 
-            context = {'pessoa': form.instance, 'inscricao': form2.instance}
+            context = {'pessoa': form.instance, 'aluno': form2.instance}
             return render (request, 'aluno/reciboInscricao.html', context)
 
     context = {'form':form,'form2':form2}
-    return render (request, 'aluno/adicionarInscricao.html', context)
+    return render (request, 'aluno/adicionarNovoCadastro-aluno.html', context)

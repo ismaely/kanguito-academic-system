@@ -1,8 +1,14 @@
+"""/
+ * @author [Gunza Ismael]
+ * @email [7ilip@gmail.com]
+ * @create date 2022-01-10 09:58:27
+ * @modify date 2022-01-10 09:58:27
+ * @desc [description]
+ */
+ """
 from django import forms
 from django.forms import ModelForm
 from pessoa.models import Pessoa
-
-
 
 class Pessoa_Form(ModelForm):
     nome = forms.CharField(max_length=100, widget=forms.TextInput(attrs={'class': 'form-control '}))
@@ -14,6 +20,7 @@ class Pessoa_Form(ModelForm):
     email = forms.EmailField(max_length=180, required=False, widget=forms.TextInput(attrs={'class': 'form-control', }))
     municipio = forms.CharField(max_length=60,required=False,  widget=forms.Select(choices="", attrs={'class': 'form-control ajax_municipio'}))
     foto = forms.CharField(required=False, widget=forms.TextInput(attrs={'type':'hidden', 'class': 'form-control', 'id': 'fotoSalva'}))
+    data_nascimento = forms.CharField(max_length=10, widget=forms.TextInput(attrs={'type':'date', 'class': 'form-control '}))
     class Meta:
         model = Pessoa
         fields = ['nome', 'nome_pai', 'nome_mae','genero','data_nascimento', 'estado_civil', 'residencia', 'provincia', 'telefone',
@@ -25,5 +32,14 @@ class Pessoa_Form(ModelForm):
             'estado_civil': forms.Select( attrs={'class': 'form-control'}),
             'documento': forms.Select( attrs={'class': 'form-control'}),
             'nacionalidade': forms.Select( attrs={'class': 'form-control '}),
-            'data_nascimento': forms.DateInput( attrs={'class': 'form-control','type': 'date'}),
+            #'data_nascimento': forms.DateInput( attrs={'class': 'form-control','type': 'date'}),
         }
+    def clean_data_nascimento(self):
+        data_nascimento = self.cleaned_data.get('data_nascimento')
+        data = []
+        data = data_nascimento.split('-')
+        print(data_nascimento)
+        #total = int(DATA_ANO) - int(data[0])
+
+        
+        return data_nascimento
