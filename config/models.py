@@ -79,3 +79,9 @@ class Pais(models.Model):
 
     def __str__(self):
         return "%s" % (self.nome)
+
+class Opcao_Matricula(models.Model):
+    nome = models.CharField(max_length=150)
+
+    def __str__ (self):
+        return "%s" % (self.nome)

@@ -2,7 +2,7 @@
 @author [Gunza Ismael]
 @email [7ilip@gmail.com]
 @create date 2021-10-12 10:24:31
-@modify date 2022-01-10 09:32:36
+@modify date 2022-01-10 16:01:32
 @desc [description]
 -->
 {% extends 'home_base.html' %}{% block corpo %}{% load static %}
@@ -28,15 +28,13 @@
             </div>
           </div>
         </div>
-
-        <!--ola-->
       </div>
       <div class="col-sm-4 invoice-col">
         <address>
           <strong>
             <h5>UNIVERSIDADE ÓSCAR RIBAS</h5>
 
-            <h5>Escola Nº 1025</h5>
+            <h5>FACULDADE DE ENGINHARIA</h5>
           </strong>
         </address>
       </div>
@@ -55,16 +53,16 @@
           <tbody>
             <tr>
               <td><b>Nome:</b> {{ pessoa.nome|safe|upper }}</td>
-              <td><b>Nª Identificação:</b> {{ pessoa.ndi }}</td>
+              <td><b>Nª Identificação:</b> {{ pessoa.ndi|safe|upper }}</td>
             </tr>
             <tr>
-              <td><b>Classe de Inscrição:</b> {{ inscricao.habilitacao_literaria.nome }}</td>
+              <td><b>Instituição de Origem:</b> {{ aluno.instituicao_origem }}</td>
               <td><b>Telefone:</b> {{ pessoa.telefone }}</td>
             </tr>
             <tr>
-              <td><b>Periodo:</b> {{ inscricao.periodo.nome }}</td>
+              <td><b>Periodo:</b> {{ aluno.periodo.nome }}</td>
               {% if inscricao.habilitacao_literaria.id > 9 %}
-              <td><b>Curso:</b> {{ inscricao.curso.nome|safe|upper }}</td>
+              <td><b>Curso:</b> {{ aluno.curso.nome|safe|upper }}</td>
               {% else %}
               <td><b>Ensino de Base</b></td>
               {% endif %}

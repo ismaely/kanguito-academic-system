@@ -1,5 +1,6 @@
 from django.contrib import admin
-from config.models import Periodo, Provincia, Grau_academico, Municipio, Tremestre, Genero, Documento_identificacao, Estado_Civil, Pais
+from config.models import (Periodo, Provincia, Grau_academico, Municipio, Tremestre, Genero, Documento_identificacao,
+ Estado_Civil, Pais, Ano, Opcao_Matricula )
 # Register your models here.
 
 
@@ -12,3 +13,5 @@ admin.site.register(Genero)
 admin.site.register(Estado_Civil)
 admin.site.register(Documento_identificacao)
 admin.site.register(Pais)
+admin.site.register(Ano)
+admin.site.register(Opcao_Matricula)
