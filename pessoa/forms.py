@@ -40,6 +40,5 @@ class Pessoa_Form(ModelForm):
         data = data_nascimento.split('-')
         print(data_nascimento)
         #total = int(DATA_ANO) - int(data[0])
-
         
         return data_nascimento
