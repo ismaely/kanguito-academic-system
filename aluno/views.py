@@ -3,7 +3,7 @@ from django.http import HttpResponseRedirect
 from django.urls import reverse
 import json, sweetify, random, base64
 from environment.env import DATA_HORA_ZONA 
-from aluno.forms import Aluno_Form
+from aluno.forms import Aluno_Form 
 from pessoa.forms import Pessoa_Form
 # Create your views here.
 
@@ -31,7 +31,6 @@ def prepara_foto(request):
 
 
 def adicionarNovoCadastro_aluno(request):
-    pass
     form = Pessoa_Form(request.POST or None)
     form2 = Aluno_Form(request.POST or None)
     if request.method == 'POST':
