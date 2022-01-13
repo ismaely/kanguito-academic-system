@@ -10,6 +10,7 @@ class Aluno_Form(ModelForm):
         model = Aluno
         fields = ['media_conclusao', 'instituicao_origem', 'numero_estudante', 'grau_academico','area_formacao', 'curso_frequentado']
         widgets = {
+            'curso_frequentado': forms.TextInput(attrs={'class': 'form-control'}),
             'area_formacao': forms.TextInput(attrs={'class': 'form-control'}),
             'media_conclusao': forms.TextInput(attrs={'class': 'form-control'}),
             'instituicao_origem': forms.TextInput(attrs={'class': 'form-control'}),
@@ -30,7 +31,7 @@ class Matricula_Form(ModelForm):
             'periodo': forms.Select( attrs={'class': 'form-control '}),
             'tremestre': forms.Select(attrs={'class': 'form-control'}),
             'nota_exame': forms.TextInput(attrs={'class': 'form-control'}),
-            'data': forms.TextInput(attrs={'class': 'form-control'}),
+            'dataMatricula': forms.DateInput(attrs={'type': 'date','class': 'form-control'}),
         }
 
 

@@ -2,7 +2,7 @@
 @author [Gunza Ismael]
 @email [7ilip@gmail.com]
 @create date 2021-09-26 13:03:25
-@modify date 2022-01-13 00:44:12
+@modify date 2022-01-13 01:47:57
 @desc [description]
 -->
 {% extends 'home_base.html' %}{% block corpo %}{% load static %}
@@ -124,15 +124,21 @@
             <div class="row">
               <div class="col-md-4">
                 <div class="form-group">
-                  <label for="curso">Curso a frequentar</label>
-                  {{ form3.curso }} {{ form3.curso.errors }}
+                  <label for="curso">Curso frequentado<span class="text-danger">*</span></label>
+                  {{ form2.curso_frequentado }} {{ form2.curso_frequentado.errors }}
                 </div>
               </div>
 
               <div class="col-md-4">
                 <div class="form-group">
-                  <label for="exampleInputEmail3">Data de Registro<span class="text-danger">*</span></label>
-                  {{ form2.data_registro }} {{ form2.data_registro.errors }}
+                  <label for="exampleInputEmail3">Area de Formação<span class="text-danger">*</span></label>
+                  {{ form2.area_formacao }} {{ form2.area_formacao.errors }}
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label for="exampleInputEmail3">Grau Academico <span class="text-danger">*</span></label>
+                  {{ form2.grau_academico }} {{ form2.grau_academico.errors }}
                 </div>
               </div>
             </div>
@@ -144,11 +150,62 @@
                   {{ form2.media_conclusao }} {{ form.media_conclusao.errors }}
                 </div>
               </div>
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label for="exampleInputEmail3">Opção de Matricula <span class="text-danger">*</span></label>
+                  {{ form3.opcao_matricula }} {{ form3.opcao_matricula.errors }}
+                </div>
+              </div>
 
               <div class="col-md-4">
                 <div class="form-group">
-                  <label for="exampleInputEmail3">Data de Registro<span class="text-danger">*</span></label>
-                  {{ form2.data_registro }} {{ form2.data_registro.errors }}
+                  <label for="exampleInputEmail3">Curso a frequentar<span class="text-danger">*</span></label>
+                  {{ form3.curso }} {{ form3.curso.errors }}
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="tab">
+            <div class="row">
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label for="curso">Periodo</label>
+                  {{ form3.periodo }} {{ form3.periodo.errors }}
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label for="exampleInputEmail3">Tremestre <span class="text-danger">*</span></label>
+                  {{ form3.tremestre }} {{ form3.tremestre.errors }}
+                </div>
+              </div>
+
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label for="exampleInputEmail3">Nivel<span class="text-danger">*</span></label>
+                  {{ form3.ano }} {{ form3.ano.errors }}
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label for="curso">Nota do Exame de Igresso</label>
+                  {{ form3.nota_exame }} {{ form3.nota_exame.errors }}
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label for="exampleInputEmail3">Número de Estudante <span class="text-danger">*</span></label>
+                  {{ form2.numero_estudante }} {{ form2.numero_estudante.errors }}
+                </div>
+              </div>
+
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label for="exampleInputEmail3">Data de Matricula<span class="text-danger">*</span></label>
+                  {{ form3.dataMatricula }} {{ form3.dataMatricula.errors }}
                 </div>
               </div>
             </div>

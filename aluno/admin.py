@@ -11,23 +11,23 @@ class AlunoAdmin(admin.ModelAdmin):
         return obj.pessoa.nome
 
 class MatriculaAdmin(admin.ModelAdmin):
-    list_display = ('__str__','aluno_numero_estudante', 'curso_nome','opcao_matricula_nome', 'ano_nome','periodo_nome', 'dataMatricula')
+    list_display = ('__str__','numero_estudante', 'curso','opcao_matricula', 'ano','periodo', 'dataMatricula')
     
     #@admin.display(ordering='pessoa_nome')
-    def aluno_numero_estudante(self, obj):
-        return obj.aluno_numero_estudante
+    def numero_estudante(self, obj):
+        return obj.aluno.numero_estudante
 
     def curso_nome(self, obj):
-        return obj.curso_nome
+        return obj.curso.nome
 
     def opcao_matricula_nome(self, obj):
-        return obj.opcao_matricula_nome
+        return obj.opcao_matricula.nome
 
     def ano_nome(self, obj):
-        return obj.ano_nome
+        return obj.ano.nome
 
     def periodo_nome(self, obj):
-        return obj.periodo_nome
+        return obj.periodo.nome
                 
 admin.site.register(Aluno, AlunoAdmin)
 admin.site.register(Matricula, MatriculaAdmin)
