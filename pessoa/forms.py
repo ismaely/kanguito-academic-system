@@ -9,6 +9,7 @@
 from django import forms
 from django.forms import ModelForm
 from pessoa.models import Pessoa
+from environment.env import DATA_ANO
 
 class Pessoa_Form(ModelForm):
     nome = forms.CharField(max_length=100, widget=forms.TextInput(attrs={'class': 'form-control '}))
@@ -31,14 +32,15 @@ class Pessoa_Form(ModelForm):
             'genero': forms.Select( attrs={'class': 'form-control'}),
             'estado_civil': forms.Select( attrs={'class': 'form-control'}),
             'documento': forms.Select( attrs={'class': 'form-control'}),
-            'nacionalidade': forms.Select( attrs={'class': 'form-control '}),
-            #'data_nascimento': forms.DateInput( attrs={'class': 'form-control','type': 'date'}),
+            'nacionalidade': forms.Select( attrs={'class': 'form-control'}),
         }
+
     def clean_data_nascimento(self):
         data_nascimento = self.cleaned_data.get('data_nascimento')
         data = []
         data = data_nascimento.split('-')
-        print(data_nascimento)
-        #total = int(DATA_ANO) - int(data[0])
+        idade = int(DATA_ANO) - int(data[0])
+        if idade < 17:
+            raise forms.ValidationError("É menor de idade...")
         
         return data_nascimento
