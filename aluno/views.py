@@ -9,9 +9,7 @@ from pessoa.forms import Pessoa_Form
 
 
 
-"""
-função que vai prepara a foto que vai ser salva
-"""
+#função que vai prepara a foto que vai ser salva
 def prepara_foto(request):
     img = request.POST["foto"]
     nome = str(DATA_HORA_ZONA).split('.')

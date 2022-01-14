@@ -85,3 +85,9 @@ class Opcao_Matricula(models.Model):
 
     def __str__ (self):
         return "%s" % (self.nome)
+
+class Contador_Numero(models.Model):
+    numero = models.IntegerField()
+
+    def __str__ (self):
+        return "%d" % (self.numero)
