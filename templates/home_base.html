@@ -2,7 +2,7 @@
 @author [Gunza Ismael]
 @email [7ilip@gmail.com]
 @create date 2021-09-26 12:33:38
-@modify date 2022-01-14 10:27:14
+@modify date 2022-01-14 10:56:15
 @desc [description]
 -->
 
@@ -96,14 +96,10 @@
                 <div class="nav-item has-sub">
                   <a href="javascript:void(0)"><i class="ik ik-layers"></i><span></span> </a>
                   <div class="submenu-content">
-                    <a href="{% url 'aluno:adicionarNovoCadastro-aluno' %}" class="menu-item">Novo cadstro do Aluno</a>
-                    <a href="#" class="menu-item">Nova Matricula</a>
+                    <a href="{% url 'aluno:adicionarNovoCadastro-aluno' %}" class="menu-item">Novo cadastro do Aluno</a>
                     <a href="#" class="menu-item">Confirmação de Matricula</a>
-                    <a href="{% url 'unidade_curricular:nova-unidadeCurricular' %}" class="menu-item">Nova Unidade Curricular</a>
-                    <a href="{% url 'unidade_curricular:listar-unidadeCurricular' %}" class="menu-item">Listar Unidade Curricular</a>
-                    <a href="{% url 'unidade_curricular:definir-unidadeCurricular-curso' %}" class="menu-item">Definir Unidade </br> Curricular do Curso</a>
-                    <a href="{% url 'unidade_curricular:listarUnidadeCurricular-cada-curso' %}" class="menu-item">Listar as Unidade </br> Curricular do Curso</a>
-                    <a href="{% url 'curso:adicionarNovo-cursos' %}" class="menu-item">Novo Curso</a>
+                    
+                    <a href="{% url 'curso:adicionarNovo-cursos' %}" class="menu-item">Adicionar novo Curso</a>
                     <a href="{% url 'curso:listar-cursos' %}" class="menu-item">Listar Cursos</a>
                   </div>
                 </div>
@@ -132,8 +128,10 @@
                 <div class="nav-item has-sub">
                   <a href="#"><i class="ik ik-package"></i><span></span></a>
                   <div class="submenu-content">
-                    <a href="{% url 'arquivo:registar-arquivos' %}" class="menu-item">Adicionar Nova</a>
+                    <a href="{% url 'unidade_curricular:nova-unidadeCurricular' %}" class="menu-item">Adicionar Nova Unidade </br> Curricular</a>
                     <a href="{% url 'unidade_curricular:listar-unidadeCurricular' %}" class="menu-item">Listar Unidades Curricular</a>
+                    <a href="{% url 'unidade_curricular:definir-unidadeCurricular-curso' %}" class="menu-item">Definir Unidade </br> Curricular do Curso</a>
+                    <a href="{% url 'unidade_curricular:listarUnidadeCurricular-cada-curso' %}" class="menu-item">Listar as Unidade </br> Curricular do Curso</a>
                     <a href="#" class="menu-item">Consultar Unidades Curricular</a>
                     <a href="#" class="menu-item">Efetuar Lançamento de Nota</a>
                     <a href="#" class="menu-item">Consultar Nota</a>

@@ -2,7 +2,7 @@
 @author [Gunza Ismael]
 @email [7ilip@gmail.com]
 @create date 2021-10-12 10:24:31
-@modify date 2022-01-10 16:01:32
+@modify date 2022-01-14 11:30:42
 @desc [description]
 -->
 {% extends 'home_base.html' %}{% block corpo %}{% load static %}
@@ -14,7 +14,7 @@
 <p></p>
 <div class="card" id="reciboInscricao">
   <div class="card-header">
-    <h3 class="d-block w-100">Recibo de Inscrição <small class="float-right">Date: {{ inscricao.data_inscricao }}</small></h3>
+    <h3 class="d-block w-100">Recibo de Matricula <small class="float-right">Date: {{ matricula.dataMatricula }}</small></h3>
   </div>
   <div class="card-body">
     <div class="row invoice-info">
@@ -29,7 +29,7 @@
           </div>
         </div>
       </div>
-      <div class="col-sm-4 invoice-col">
+      <div class="col-sm-5 invoice-col">
         <address>
           <strong>
             <h5>UNIVERSIDADE ÓSCAR RIBAS</h5>
@@ -38,6 +38,7 @@
           </strong>
         </address>
       </div>
+      <!--
       <div class="col-sm-4 invoice-col">
         <b></b><br />
         <br />
@@ -45,6 +46,7 @@
         <b>Estado:</b> <br />
         <b></b>
       </div>
+      -->
     </div>
 
     <div class="row">
@@ -60,12 +62,8 @@
               <td><b>Telefone:</b> {{ pessoa.telefone }}</td>
             </tr>
             <tr>
-              <td><b>Periodo:</b> {{ aluno.periodo.nome }}</td>
-              {% if inscricao.habilitacao_literaria.id > 9 %}
-              <td><b>Curso:</b> {{ aluno.curso.nome|safe|upper }}</td>
-              {% else %}
-              <td><b>Ensino de Base</b></td>
-              {% endif %}
+              <td><b>Periodo:</b> {{ matricula.periodo.nome }}</td>
+              <td><b>Curso:</b> {{ matricula.curso.nome|safe|upper }}</td>
               <td></td>
             </tr>
           </tbody>
@@ -75,29 +73,29 @@
 
     <div class="row">
       <div class="col-6">
-        <p class="lead">Extra:</p>
+        <p class="lead">-----------</p>
 
         <div class="alert alert-secondary mt-20">
-          <b>E-mail da Instituição:</b> escola@gmail.com<br />
+          <b>E-mail da Instituição:</b> uor@uor.com<br />
           <b>Telefone:</b> <br />
+          <b>zona: Talatona avenida shopping</b> <br />
         </div>
       </div>
       <div class="col-6">
-        <p class="lead">Custo de Pagamentos</p>
+        <p class="lead">------------</p>
         <div class="table-responsive">
           <table class="table">
             <tr>
-              <th style="width: 50%">Subtotal:</th>
-              <td>$250.30</td>
-            </tr>
-
-            <tr>
-              <th>Shipping:</th>
-              <td>$5.80</td>
+              <th style="width: 50%">Nivel:</th>
+              <td>{{ matricula.ano.nome|safe|upper }}</td>
             </tr>
             <tr>
-              <th>Total:</th>
-              <td>$265.24</td>
+              <th>Número do Estudante:</th>
+              <td>{{ aluno.numero_estudante|safe|upper }}</td>
+            </tr>
+            <tr>
+              <th>Estado:</th>
+              <td>{{ matricula.opcao_matricula.nome|safe|upper }}</td>
             </tr>
           </table>
         </div>

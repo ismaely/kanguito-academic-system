@@ -56,8 +56,7 @@ def adicionarNovoCadastro_aluno(request):
             resp.aluno_id = dados.id
             resp.save()
 
-            sweetify.toast(request, 'Dados registado com sucesso !', icon="success", timer=3000)
-            #sweetify.success(request, 'Dados registado com sucesso!....', button='Ok', timer='3100', persistent="Close")
+            sweetify.success(request, 'Dados registado com sucesso!....', button='Ok', timer='3100', persistent="Close")
 
             context = {'pessoa': form.instance, 'aluno': form2.instance, 'matricula': form3.instance}
             return render (request, 'aluno/reciboInscricao.html', context)
