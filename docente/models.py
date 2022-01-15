@@ -16,3 +16,12 @@ class Categoria(models.Model):
     def __str__ (self):
         return "%s" % (self.nome)
 
+
+class Docente(models.Model):
+    pessoa= models.ForeignKey(Pessoa, on_delete=models.CASCADE, parent_link=True)
+    numero_docente= models.CharField(max_length=10, null=True)
+    categoria = models.ForeignKey(Categoria, on_delete=models.CASCADE, parent_link=True)
+    grau_academico = models.ForeignKey(Docente_Grau_academico, on_delete=models.CASCADE, parent_link=True)
+
+    def __str__ (self):
+        return '%d'  % (self.id)

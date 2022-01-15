@@ -27,6 +27,7 @@ urlpatterns = [
     path('arquivo/', include('arquivo.urls')),
     path('biblioteca/', include('biblioteca.urls')),
     path('curso/', include('curso.urls')),
+    path('docente/', include('docente.urls')),
     path('admin/', admin.site.urls),
 
 ]+ static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)

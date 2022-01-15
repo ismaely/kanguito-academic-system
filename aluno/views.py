@@ -1,36 +1,18 @@
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
 from django.urls import reverse
-import json, sweetify, random, base64
+import sweetify
 from environment.env import DATA_HORA_ZONA, DATA_ANO
 from aluno.forms import Aluno_Form, Matricula_Form
 from pessoa.forms import Pessoa_Form
+from config.views import prepara_foto
 # Create your views here.
 
 
 
 
-#função que vai prepara a foto que vai ser salva
-def prepara_foto(request):
-    img = request.POST["foto"]
-    nome = str(DATA_HORA_ZONA).split('.')
-    foto = []
-    inicio = img.find(',')
-    imagem = img[inicio+1:]
-
-    with open("./media/fotos/"+ str(nome[0]) + "_" + str(random.random()) + ".png", "wb") as fh:
-        fh.write(base64.b64decode(imagem))
-        foto = str(fh).split('=')
-        um = foto[1].replace(">", '')
-
-    um = um.replace("'", '')
-    um = um.split('media/')
-    return um[1]
-
-
 
 def adicionarNovoCadastro_aluno(request):
-    print(DATA_ANO)
     form = Pessoa_Form(request.POST or None)
     form2 = Aluno_Form(request.POST or None)
     form3 = Matricula_Form(request.POST or None)
