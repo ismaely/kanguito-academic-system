@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'arquivo',
     'biblioteca',
     'teses',
+    'docente',
     
 ]
 
