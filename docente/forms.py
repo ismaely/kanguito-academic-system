@@ -9,11 +9,13 @@ class Docente_Form(ModelForm):
     class Meta:
         pessoa = forms.CharField(max_length=10, required=False, widget=forms.TextInput(attrs={'class': 'form-control'}))
         model = Docente
-        fields = ['numero_docente', 'categoria','grau_academico']
+        fields = ['numero_docente', 'categoria','grau_academico', 'data_registro', 'estado']
         widgets = {
             'numero_docente': forms.TextInput(attrs={'class': 'form-control'}),
             'categoria': forms.Select( attrs={'class': 'form-control '}),
+            'estado': forms.Select( attrs={'class': 'form-control '}),
             'grau_academico': forms.Select( attrs={'class': 'form-control '}),
+            'data_registro': forms.DateInput(attrs={'type': 'date','class': 'form-control'}),
         }
 
 

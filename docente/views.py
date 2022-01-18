@@ -8,6 +8,14 @@ from config.views import prepara_foto
 # Create your views here.
 
 
+#@login_required
+def listar_docente(request):
+    lista =  Docente.objects.select_related('pessoa').all().order_by('-pessoa')
+    context = {'lista': lista}
+    return render (request, 'docente/listar_docente.html', context)
+
+
+
 def adicionar_docente(request):
     form = Pessoa_Form(request.POST or None)
     form2 = Docente_Form(request.POST or None)
@@ -15,6 +23,7 @@ def adicionar_docente(request):
         if form.is_valid() and form2.is_valid():
 
             pessoa = form.save(commit=False)
+            pessoa.municipio_id = form.cleaned_data.get('municipio')
             if len(request.POST['foto']) > 0:
                 pessoa.foto = prepara_foto(request)
                 pessoa.save()

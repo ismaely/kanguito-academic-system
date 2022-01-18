@@ -1,0 +1,218 @@
+<!--
+@author [Gunza Ismael]
+@email [7ilip@gmail.com]
+@create date 2021-09-26 13:03:25
+@modify date 2022-01-18 02:09:38
+@desc [description]
+-->
+{% extends 'home_base.html' %}{% block corpo %}{% load static %}
+<div class="row">
+  <div class="col-md-12">
+    <div class="card">
+      <div class="card-header"><h3>Cadastro do Docente</h3></div>
+      <div class="card-body">
+        <form id="regForm" class="forms-sample" action="{% url 'docente:adicionar-docente' %}" method="POST" enctype="multipart/form-data">
+          {% csrf_token %} {% autoescape on %}
+          <div class="all-steps" id="all-steps"><span class="step"></span> <span class="step"></span> <span class="step"></span> <span class="step"></span></div>
+          <div class="tab">
+            <div class="row">
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label for="exampleInputEmail3">Nome Completo <span class="text-danger">*</span></label>
+                  {{ form.nome }} <span class="text-danger">{{ form.nome.errors }}</span>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label for="exampleInputEmail3">Nome do Pai</label>
+                  {{ form.nome_pai }} {{ form.nome_pai.errors }}
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label for="exampleInputEmail3">Nome da Maẽ</label>
+                  {{ form.nome_mae }} {{ form.nome_mae.errors }}
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label for="exampleInputEmail3">Documento de Identificação <span class="text-danger">*</span></label>
+                  {{ form.documento }} {{ form.documento.errors }}
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label for="exampleInputEmail3">Nº Identificação <span class="text-danger">*</span></label>
+                  {{ form.ndi }} {{ form.ndi.errors }}
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label for="exampleInputEmail3">Data de Nascimento <span class="text-danger">*</span></label>
+                  {{ form.data_nascimento }} {{ form.data_nascimento.errors }}
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label for="exampleInputEmail3">Genero <span class="text-danger">*</span></label>
+                  {{ form.genero }} {{ form.genero.errors }}
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label for="exampleInputEmail3">Estado Civil <span class="text-danger">*</span></label>
+                  {{ form.estado_civil }} {{ form.estado_civil.errors }}
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label for="exampleInputEmail3">Nacionalidade</label>
+                  {{ form.nacionalidade}} {{ form.nacionalidade.errors }}
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label for="exampleInputEmail3">Provincia <span class="text-danger">*</span></label>
+                  {{ form.provincia }} {{ form.provincia.errors }}
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label for="exampleInputEmail3">Munícipio <span class="text-danger">*</span></label>
+                  {{ form.municipio }} {{ form.municipio.errors }}
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label for="exampleInputEmail3">Morada / Rua</label>
+                  {{ form.residencia }} {{ form.residencia.errors }}
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="tab">
+            <div class="row">
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label for="exampleInputEmail3">Telefone <span class="text-danger">*</span></label>
+                  {{ form.telefone }} {{ form.telefone.errors }}
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label for="exampleInputEmail3">E-mail</label>
+                  {{ form.email }} {{ form.email.errors }}
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label for="exampleInputEmail3">Número do Docente<span class="text-danger">*</span></label>
+                  {{ form2.numero_docente }} {{ form2.numero_docente.errors }}
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label for="curso">Categoria do Docente<span class="text-danger">*</span></label>
+                  {{ form2.categoria }} {{ form2.categoria.errors }}
+                </div>
+              </div>
+
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label for="exampleInputEmail3">Grau Academico <span class="text-danger">*</span></label>
+                  {{ form2.grau_academico }} {{ form2.grau_academico.errors }}
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label for="">Situação<span class="text-danger">*</span></label>
+                  {{ form2.estado }} {{ form2.estado.errors }}
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label for="">Data Registro<span class="text-danger">*</span></label>
+                  {{ form2.data_registro }} {{ form2.data_registro.errors }}
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="tab">
+            <div class="row">
+              <div class="col-md-4">
+                <h4>Tira Fotografia</h4>
+                <div class="card">
+                  <div class="card-body text-center">
+                    <div class="profile-pic mb-5">
+                      <!--<img src="../img/user.jpg" width="150" class="rounded-circle" alt="user" />-->
+                      <div id="my_camera"></div>
+                    </div>
+                  </div>
+                  <div class="p-4 border-top mt-4">
+                    <div class="row text-center">
+                      <div class="col-6 border-right">
+                        <a href="#" class="link d-flex align-items-center justify-content-center" onClick="configure()">
+                          <i class="ik ik-message-square f-20 mr-5"></i>Ligar Camera
+                        </a>
+                      </div>
+                      <div class="col-6">
+                        <a href="#" class="link d-flex align-items-center justify-content-center" onClick="take_snapshot()"><i class="ik ik-box f-20 mr-5"></i>Foto</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-4">
+                {{ form.foto }}
+                <h4></h4>
+                <div class="card">
+                  <div class="card-body text-center">
+                    <div class="profile-pic mb-20">
+                      <div id="results"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-4">
+                <h4></h4>
+                <div class="card">
+                  <div class="card-body text-center">
+                    <div class="profile-pic mb-20">
+                      <div id="result"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div style="overflow: auto" id="nextprevious">
+            <div style="float: right">
+              <button type="button" id="prevBtn" onclick="nextPrev(-1)">Previous</button> <button type="button" id="nextBtn" onclick="nextPrev(1)">Proximo</button>
+            </div>
+          </div>
+          {% endautoescape %}
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
