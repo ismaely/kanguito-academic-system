@@ -33,6 +33,7 @@ class UnidadeCurricular_Curso(models.Model):
     ano_academico = models.CharField(max_length=100)
     created = models.DateTimeField(auto_now=True)
     updated = models.DateTimeField(auto_now_add=True)
+    carga_horaria = models.CharField(max_length=20, blank=True, null=True, default="")
 
     def __str__ (self):
         return self.id

@@ -1,6 +1,8 @@
 from django.db import models
 from django.utils import timezone
 from pessoa.models import Pessoa
+from config.models import Periodo
+from unidade_curricular.models import UnidadeCurricular
 
 # Create your models here.
 
@@ -36,3 +38,18 @@ class Docente(models.Model):
 
     def __str__ (self):
         return '%d'  % (self.id)
+
+
+"""class Unidade_Curricular_Docente(models.Model):
+    docente= models.ForeignKey(Docente, on_delete=models.CASCADE, parent_link=True)
+    curso= models.ForeignKey(Docente, on_delete=models.CASCADE, parent_link=True)
+    unidadeCurricular = models.ForeignKey(UnidadeCurricular, on_delete=models.CASCADE, parent_link=True)
+    periodo = models.ForeignKey(Estado_Docente, on_delete=models.CASCADE, parent_link=True)
+    estado = models.ForeignKey(Estado_Docente, on_delete=models.CASCADE, parent_link=True)
+    ano = models.ForeignKey(Estado_Docente, on_delete=models.CASCADE, parent_link=True)
+    data_registro = models.DateField(default=timezone.now)
+    created = models.DateField(blank=True, null=True)
+    updated = models.DateTimeField(auto_now_add=True)
+
+    def __str__ (self):
+        return '%d'  % (self.id)"""
