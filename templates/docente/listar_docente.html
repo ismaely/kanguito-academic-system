@@ -2,7 +2,7 @@
 @author [Gunza Ismael]
 @email [7ilip@gmail.com]
 @create date 2021-09-26 12:33:14
-@modify date 2022-01-18 17:07:43
+@modify date 2022-01-20 23:32:02
 @desc [description]
 -->
 
@@ -13,6 +13,7 @@
     <table id="advanced_table" class="table">
       <thead>
         <tr>
+          <th>#</th>
           <th>Nome</th>
           <th>Categoria</th>
           <th>Grau Academico</th>
@@ -25,6 +26,9 @@
       <tbody>
         {% for dados in lista %}
         <tr>
+          <td class="">
+            <img src="/media/{{ dados.pessoa.foto }}" alt="user" class="table-user-thumb" />
+          </td>
           <td class="">{{ dados.pessoa.nome|upper }}</td>
           <td class="">{{ dados.categoria.nome|upper|truncatechars:40 }}</td>
           <td class="">{{ dados.grau_academico.nome|upper }}</td>

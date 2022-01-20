@@ -1,9 +1,10 @@
 from django.shortcuts import render
 import sweetify
+from django.db.models import Q
 from docente.models import Docente
 from pessoa.models import Pessoa
 from pessoa.forms import Pessoa_Form
-from docente.forms import Docente_Form
+from docente.forms import Docente_Form, ConsultarForm
 from config.views import prepara_foto
 
 # Create your views here.
@@ -13,6 +14,19 @@ from config.views import prepara_foto
 def listar_docente(request):
     lista =  Docente.objects.select_related('pessoa').all().order_by('-pessoa')
     context = {'lista': lista}
+    return render (request, 'docente/listar_docente.html', context)
+
+
+#@login_required
+def consultar_dados_docente(request):
+    form = ConsultarForm(request.POST or None)
+    if request.method == "POST":
+        nome = request.POST['nome'].upper()
+        lista = Docente.objects.filter(Q(pessoa_nome__contains=nome) | Q(autor__contains=nome))
+        context = {'lista': lista}
+        return render (request, 'arquivos/listar_arquivos.html', context)
+
+    context = {'form': form}
     return render (request, 'docente/listar_docente.html', context)
 
 
