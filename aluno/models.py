@@ -16,6 +16,7 @@ class Motivo_Reclamacao(models.Model):
 
 
 class Aluno(models.Model):
+
     pessoa = models.ForeignKey(Pessoa, on_delete=models.CASCADE, parent_link=True)
     curso = models.ForeignKey(Curso, on_delete=models.CASCADE, parent_link=True)
     grau_academico = models.ForeignKey(Grau_academico, on_delete=models.CASCADE, parent_link=True)
@@ -55,7 +56,7 @@ class Reclamacao(models.Model):
     aluno = models.ForeignKey(Aluno, on_delete=models.CASCADE, parent_link=True)
     curso = models.ForeignKey(Curso, on_delete=models.CASCADE, parent_link=True)
     motivo = models.ForeignKey(Motivo_Reclamacao, on_delete=models.CASCADE, parent_link=True)
-    data_reclamacao = models.DateField(auto_now_add=True, blank=False, null=True)
+    data_reclamacao = models.DateField(default=timezone.now)
     estado = models.CharField(max_length=20, null=True, default="Em Analise")
     descricao = models.CharField(max_length=3000, null=True, default="")
     created = models.DateField(blank=True, null=True)

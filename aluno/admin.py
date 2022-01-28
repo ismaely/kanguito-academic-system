@@ -1,7 +1,22 @@
 from django.contrib import admin
-from aluno.models import Aluno, Matricula
+from aluno.models import Aluno, Matricula, Motivo_Reclamacao, Reclamacao
 
 # Register your models here.
+
+
+class ReclamacaoAdmin(admin.ModelAdmin):
+    list_display = ('__str__','pessoa_nome', 'curso','motivo','descricao', 'data_reclamacao', 'estado')
+    empty_value_display = ''
+    #@admin.display(ordering='pessoa_nome')
+    def pessoa_nome(self, obj):
+        return obj.aluno.pessoa.nome
+    
+    def curso_nome(self, obj):
+        return obj.curso.nome
+    
+    def motivo_nome(self, obj):
+        return obj.motivo.nome
+
 
 class AlunoAdmin(admin.ModelAdmin):
     list_display = ('__str__','pessoa_nome', 'numero_estudante','media_conclusao','instituicao_origem')
@@ -28,6 +43,8 @@ class MatriculaAdmin(admin.ModelAdmin):
 
     def periodo_nome(self, obj):
         return obj.periodo.nome
-                
+
+
 admin.site.register(Aluno, AlunoAdmin)
 admin.site.register(Matricula, MatriculaAdmin)
+admin.site.register(Reclamacao, ReclamacaoAdmin)
