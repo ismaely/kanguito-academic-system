@@ -30,7 +30,7 @@ class Aluno_Form(ModelForm):
 
 class Matricula_Form(ModelForm):
     class Meta: 
-        aluno = forms.CharField(max_length=10, required=False, widget=forms.TextInput(attrs={'class': 'form-control'}))
+        aluno = forms.CharField(max_length=20, required=False, widget=forms.TextInput(attrs={'class': 'form-control'}))
         #numero_estudante = forms.CharField(max_length=10, required=False, widget=forms.TextInput(attrs={'class': 'form-control'}))
         model = Matricula
         fields = ['curso', 'opcao_matricula', 'ano', 'tremestre','periodo','nota_exame','dataMatricula']
@@ -46,11 +46,12 @@ class Matricula_Form(ModelForm):
 
 
 class Reclamacao_Form(ModelForm):
+    aluno = forms.CharField(max_length=20, required=False, widget=forms.TextInput(attrs={'class': 'form-control'}))
     class Meta:
-        aluno = forms.CharField(max_length=10, required=False, widget=forms.TextInput(attrs={'class': 'form-control'}))
         model = Reclamacao
-        fields = [ 'curso', 'motivo', 'data_reclamacao','descricao']
+        fields = ['curso', 'motivo', 'data_reclamacao', 'descricao']
         widgets = {
+            #'aluno': forms.TextInput(attrs={'class': 'form-control'}),
             'descricao': forms.Textarea(attrs={'class': 'form-control'}),
             'curso': forms.Select( attrs={'class': 'form-control '}),
             'motivo': forms.Select( attrs={'class': 'form-control '}),
@@ -58,13 +59,13 @@ class Reclamacao_Form(ModelForm):
             
         }
 
-        def clean_aluno(self):
-            aluno = self.cleaned_data.get('aluno')
-            resp = retornaId(aluno)
-            aluno = resp
-            if int(resp) == 0:
-                raise forms.ValidationError("o numero de indetificação não é valido")
-            return aluno
+    def clean_aluno(self):
+        aluno = self.cleaned_data.get('aluno')
+        resp = retornaId(aluno)
+        aluno = resp
+        if int(resp) == 0:
+            raise forms.ValidationError("o numero de indetificação não é valido")
+        return resp
 
 
 class ConsultarForm(forms.Form):

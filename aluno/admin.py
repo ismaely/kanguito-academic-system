@@ -1,5 +1,5 @@
 from django.contrib import admin
-from aluno.models import Aluno, Matricula, Motivo_Reclamacao, Reclamacao
+from aluno.models import Aluno, Matricula, Motivo_Reclamacao, Reclamacao, Motivo_Reclamacao
 
 # Register your models here.
 
@@ -45,6 +45,12 @@ class MatriculaAdmin(admin.ModelAdmin):
         return obj.periodo.nome
 
 
+class Motivo_ReclamacaoAdmin(admin.ModelAdmin):
+    list_display = ('nome', 'opcao')
+    empty_value_display = ''
+
+
 admin.site.register(Aluno, AlunoAdmin)
 admin.site.register(Matricula, MatriculaAdmin)
 admin.site.register(Reclamacao, ReclamacaoAdmin)
+admin.site.register(Motivo_Reclamacao, Motivo_ReclamacaoAdmin)

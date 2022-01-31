@@ -14,7 +14,7 @@ class Tipo_Dificiencia(models.Model):
 
 
 class Pessoa(models.Model):
-    nome = models.CharField(max_length=200,)
+    nome = models.CharField(max_length=200)
     nome_pai = models.CharField(max_length=200, blank=True, null=True, default="")
     nome_mae = models.CharField(max_length=200, blank=True, null=True, default="")
     genero = models.ForeignKey(Genero, on_delete=models.CASCADE, parent_link=True)
@@ -37,3 +37,6 @@ class Pessoa(models.Model):
 
     def __str__(self):
         return self.id
+
+    def upper(self):
+        return self.ndi.upper()

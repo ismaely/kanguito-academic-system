@@ -9,18 +9,21 @@ from config.views import prepara_foto
 # Create your views here.
 
 
+def listar_reclamacao(request):
+    lista =  Docente.objects.select_related('pessoa').all().order_by('-pessoa')
+    context = {'lista': lista}
+    
+    return render(request, 'aluno/efecturReclamacao.html', context)
 
 def efectuar_reclamacao(request):
     form = Reclamacao_Form(request.POST or None)
     if request.method == 'POST':
         if form.is_valid():
-            aluno = request.POST.get('aluno')
             recl = form.save(commit=False)
-            recl.aluno_id = aluno
+            recl.aluno_id = form.cleaned_data['aluno']
             recl.save()
-            sweetify.success(request, 'Reclamação feita com sucesso!....', button='Ok', timer='3100', persistent="Close")
-            context = {'aluno': form.instance}
-            # return render (request, 'aluno/reciboInscricao.html', context)
+            sweetify.success(request, 'Reclamação feita com sucesso!...', button='Ok', timer='3100', persistent="Close")
+            form = Reclamacao_Form()
 
     context = {'form': form}
     return render(request, 'aluno/efecturReclamacao.html', context)

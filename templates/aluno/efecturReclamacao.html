@@ -6,20 +6,21 @@
       {% if pk is not null %}
       <div class="card-header"><h3>Efectuar Reclamação</h3></div>
       <div class="card-body">
-        <form class="forms-sample" action="{% url 'unidade_curricular:editar-UnidadeCurricular' pk %}" method="POST">
+        <form class="forms-sample" action="{% url 'aluno:efectuar-reclamacao' pk %}" method="POST">
         {% else %}
         <div class="card-header"><h3>Efectuar Reclamação</h3></div>
         <div class="card-body">
           <form class="forms-sample" action="{% url 'aluno:efectuar-reclamacao' %}" method="POST">
             {% endif %} {% csrf_token %} {% autoescape on %}
             <div class="form-group row">
-              <label for="exampleInputUsername2" class="col-sm-3 col-form-label">Nº B.I/Nº de estudante</label>
+              <label  class="col-sm-3 col-form-label">Nº B.I/Nº de estudante</label>
               <div class="col-sm-9">{{ form.aluno }}{{ form.aluno.errors }}</div>
             </div>
             <div class="form-group row">
               <label for="exampleInputEmail2" class="col-sm-3 col-form-label">Curso</label>
               <div class="col-sm-9">{{ form.curso }}{{ form.curso.errors }}</div>
             </div>
+
             <div class="form-group row">
               <label for="exampleInputMobile" class="col-sm-3 col-form-label">Motivo</label>
               <div class="col-sm-9">{{ form.motivo }}{{ form.motivo.errors }}</div>

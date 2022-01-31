@@ -34,7 +34,6 @@ class Aluno(models.Model):
     
 
 
-
 class Matricula(models.Model):
     aluno = models.ForeignKey(Aluno, on_delete=models.CASCADE, parent_link=True)
     curso = models.ForeignKey(Curso, on_delete=models.CASCADE, parent_link=True)
@@ -62,5 +61,6 @@ class Reclamacao(models.Model):
     created = models.DateField(blank=True, null=True)
     updated = models.DateTimeField(auto_now_add=True)
 
+    @admin.display(ordering='-aluno')
     def __str__ (self):
         return self.id
