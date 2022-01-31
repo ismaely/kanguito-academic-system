@@ -6,14 +6,18 @@ from environment.env import DATA_HORA_ZONA, DATA_ANO
 from aluno.forms import Aluno_Form, Matricula_Form, Reclamacao_Form
 from pessoa.forms import Pessoa_Form
 from config.views import prepara_foto
+from aluno.models import Reclamacao
 # Create your views here.
 
 
+
 def listar_reclamacao(request):
-    lista =  Docente.objects.select_related('pessoa').all().order_by('-pessoa')
+    lista =  Reclamacao.objects.select_related('aluno').all()
     context = {'lista': lista}
     
-    return render(request, 'aluno/efecturReclamacao.html', context)
+    return render(request, 'aluno/listar_reclamacao.html.html', context)
+
+
 
 def efectuar_reclamacao(request):
     form = Reclamacao_Form(request.POST or None)
