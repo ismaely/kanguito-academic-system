@@ -15,7 +15,7 @@ def listar_reclamacao(request):
     lista =  Reclamacao.objects.select_related('aluno').all()
     context = {'lista': lista}
     
-    return render(request, 'aluno/listar_reclamacao.html.html', context)
+    return render(request, 'aluno/listar_reclamacao.html', context)
 
 
 
