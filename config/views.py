@@ -2,6 +2,7 @@ from django.shortcuts import render
 from config.models import Contador_Numero
 from environment.env import DATA_ANO, DATA_HORA_ZONA
 import random, base64
+from aluno.models import Aluno
 
 
 
@@ -29,7 +30,7 @@ def gerarNumeroEstudante():
     try:
         resp = Contador_Numero.objects.first()
         contador = int(resp.numero) + 1
-        resp.numero =  contador
+        resp.numero = contador
         novo_numero = str(contador)
         resp.save()
 
@@ -38,3 +39,17 @@ def gerarNumeroEstudante():
         return atribuindo
     except Exception as e:
         print('falha no ao atrbuir o numeroo de estaudante')
+
+
+def retornaId(value):
+    try:
+        alu = Aluno.objects.get(pessoa__ndi=value)
+        if alu.id is not None:
+            return alu.id
+    except Aluno.DoesNotExist:
+        try:
+            resp = Aluno.objects.get(numero_estudante=value)
+            if resp.id:
+                return resp.id
+        except Aluno.DoesNotExist:
+            return 0

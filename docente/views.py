@@ -1,9 +1,10 @@
 from django.shortcuts import render
 import sweetify
-from docente.models import Docente
+from django.db.models import Q
+from docente.models import Docente, Orientador
 from pessoa.models import Pessoa
 from pessoa.forms import Pessoa_Form
-from docente.forms import Docente_Form
+from docente.forms import Docente_Form, ConsultarForm, OrientadorFrom
 from config.views import prepara_foto
 
 # Create your views here.
@@ -11,8 +12,39 @@ from config.views import prepara_foto
 
 #@login_required
 def listar_docente(request):
-    lista =  Docente.objects.select_related('pessoa').all().order_by('-pessoa')
+    lista = Docente.objects.select_related('pessoa').all().order_by('-pessoa')
     context = {'lista': lista}
+    return render (request, 'docente/listar_docente.html', context)
+
+
+def listar_Orientador_teseTcc(request):
+    lista = Orientador.objects.select_related('docente').all().order_by('-docente')
+    context = {'lista': lista}
+    return render (request, 'docente/listar_Orientador.html', context)
+
+
+def definirOrientador_teseTcc(request):
+    form = OrientadorFrom(request.POST or None)
+    if request.method == 'POST':
+        if form.is_valid():
+            form.save()
+            sweetify.success(request,'Orientador definido com sucesso', button='Ok', timer='3100', persistent="Close")
+            form = OrientadorFrom()
+
+    context = {'form': form}
+    return render (request, 'docente/definirOrientador_teseTcc.html', context)
+
+
+#@login_required
+def consultar_dados_docente(request):
+    form = ConsultarForm(request.POST or None)
+    if request.method == "POST":
+        nome = request.POST['nome'].upper()
+        lista = Docente.objects.filter(Q(pessoa_nome__contains=nome) | Q(autor__contains=nome))
+        context = {'lista': lista}
+        return render (request, 'arquivos/listar_arquivos.html', context)
+
+    context = {'form': form}
     return render (request, 'docente/listar_docente.html', context)
 
 

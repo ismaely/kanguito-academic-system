@@ -2,24 +2,23 @@
 @author [Gunza Ismael]
 @email [7ilip@gmail.com]
 @create date 2021-09-26 12:33:14
-@modify date 2022-01-20 23:32:02
+@modify date 2022-02-02 00:14:38
 @desc [description]
 -->
 
 {% extends 'home_base.html' %}{% block corpo %}{% load static %}
 <div class="card">
-  <div class="card-header row"><h3>Lista de Docentes Disponivel</h3></div>
+  <div class="card-header row"><h3>Lista de Docentes para Orientação de TCC</h3></div>
   <div class="card-body">
     <table id="advanced_table" class="table">
       <thead>
         <tr>
           <th>#</th>
-          <th>Nome</th>
-          <th>Categoria</th>
-          <th>Grau Academico</th>
-          <th>Número do Docente</th>
-          <th>Estado</th>
-          <th>Data</th>
+          <th>Nome do Docente</th>
+          <th>Curso</th>
+          <th>Disponibilidade</th>
+          <th>Número maximo de TCC</th>
+          <th>Data Limite</th>
           <th class="no-link last"><span class="nobr">Opções</span></th>
         </tr>
       </thead>
@@ -27,14 +26,13 @@
         {% for dados in lista %}
         <tr>
           <td class="">
-            <img src="/media/{{ dados.pessoa.foto }}" alt="user" class="table-user-thumb" />
+            <img src="/media/{{ dados.docente.pessoa.foto }}" alt="user" class="table-user-thumb" />
           </td>
-          <td class="">{{ dados.pessoa.nome|upper }}</td>
-          <td class="">{{ dados.categoria.nome|upper|truncatechars:40 }}</td>
-          <td class="">{{ dados.grau_academico.nome|upper }}</td>
-          <td class="">{{ dados.numero_docente }}</td>
-          <td class="">{{ dados.estado }}</td>
-          <td class="">{{ dados.data_registro|upper }}</td>
+          <td class="">Dr. {{ dados.docente.pessoa.nome|upper }}</td>
+          <td class="">{{ dados.curso.nome }}</td>
+          <td class="">{{ dados.estado|lower }}</td>
+          <td class="">{{ dados.numero_orientados }}</td>
+          <td class="">{{ dados.data_limite }}</td>
           <td>
             <ul class="nav nav-pills">
               <li class="nav-item dropdown">
@@ -42,8 +40,9 @@
                   >Acção <i class="ik ik-chevron-down"></i
                 ></a>
                 <div class="dropdown-menu">
-                  <a class="dropdown-item" href="{% url 'docente:atualizar-dados-docente' dados.pessoa_id %}">ATUALIZAR</a>
-                  <a class="dropdown-item" href="">DESATIVAR</a>
+                  <a class="dropdown-item" href="">Atualizar</a>
+                  <a class="dropdown-item" href="">Abri a Candidatura</a>
+                  <a class="dropdown-item" href="">Fechar a Candidatura</a>
                   <div class="dropdown-divider"></div>
                 </div>
               </li>

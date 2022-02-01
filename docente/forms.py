@@ -1,6 +1,6 @@
 from django import forms
 from django.forms import ModelForm
-from docente.models import Docente
+from docente.models import Docente, Orientador
 from config.views import gerarNumeroEstudante
 
 
@@ -16,6 +16,19 @@ class Docente_Form(ModelForm):
             'estado': forms.Select( attrs={'class': 'form-control '}),
             'grau_academico': forms.Select( attrs={'class': 'form-control '}),
             'data_registro': forms.DateInput(attrs={'type': 'date','class': 'form-control'}),
+        }
+
+
+class OrientadorFrom(ModelForm):
+    class Meta:
+        model = Orientador
+        fields = ['docente','curso', 'data_limite', 'estado','numero_orientados']
+        widgets = {
+            'docente': forms.Select( attrs={'class': 'form-control '}),
+            'estado': forms.Select( attrs={'class': 'form-control '}),
+            'curso': forms.Select( attrs={'class': 'form-control '}),
+            'data_limite': forms.DateInput(attrs={'type': 'date','class': 'form-control'}),
+            'numero_orientados': forms.NumberInput(attrs={'type': 'integer','class': 'form-control'}),
         }
 
 

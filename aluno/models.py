@@ -6,7 +6,17 @@ from config.models import Opcao_Matricula, Periodo, Tremestre,Ano, Grau_academic
 from curso.models import Curso
 # Create your models here.
 
+
+class Motivo_Reclamacao(models.Model):
+    nome = models.CharField(max_length=50)
+    opcao = models.CharField(max_length=160, blank=True, null=True)
+    def __str__ (self):
+        return "%s" % (self.nome)
+
+
+
 class Aluno(models.Model):
+
     pessoa = models.ForeignKey(Pessoa, on_delete=models.CASCADE, parent_link=True)
     curso = models.ForeignKey(Curso, on_delete=models.CASCADE, parent_link=True)
     grau_academico = models.ForeignKey(Grau_academico, on_delete=models.CASCADE, parent_link=True)
@@ -22,7 +32,6 @@ class Aluno(models.Model):
     def __str__ (self):
         return self.id
     
-
 
 
 class Matricula(models.Model):
@@ -41,3 +50,17 @@ class Matricula(models.Model):
         return self.id
 
 
+
+class Reclamacao(models.Model):
+    aluno = models.ForeignKey(Aluno, on_delete=models.CASCADE, parent_link=True)
+    curso = models.ForeignKey(Curso, on_delete=models.CASCADE, parent_link=True)
+    motivo = models.ForeignKey(Motivo_Reclamacao, on_delete=models.CASCADE, parent_link=True)
+    data_reclamacao = models.DateField(default=timezone.now)
+    estado = models.CharField(max_length=20, null=True, default="Em Analise")
+    descricao = models.CharField(max_length=3000, null=True, default="")
+    created = models.DateField(blank=True, null=True)
+    updated = models.DateTimeField(auto_now_add=True)
+
+    @admin.display(ordering='-aluno')
+    def __str__ (self):
+        return self.id
