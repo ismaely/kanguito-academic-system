@@ -45,7 +45,7 @@ class Docente(models.Model):
     updated = models.DateTimeField(auto_now_add=True)
 
     def __str__ (self):
-        return '%s'  % (self.pessoa.nome)
+        return 'Dr %s'  % (self.pessoa.nome)
 
 
 class Orientador(models.Model):
@@ -53,6 +53,7 @@ class Orientador(models.Model):
     curso = models.ForeignKey(Curso, on_delete=models.CASCADE, parent_link=True)
     data_limite = models.DateField(default=timezone.now)
     estado = models.ForeignKey(Estado_Orientador, on_delete=models.CASCADE, parent_link=True)
+    numero_orientados = models.IntegerField(default=1)
     created = models.DateField(blank=True, null=True)
     updated = models.DateTimeField(auto_now_add=True)
 

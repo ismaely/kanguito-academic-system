@@ -2,7 +2,7 @@
 @author [Gunza Ismael]
 @email [7ilip@gmail.com]
 @create date 2021-09-26 12:33:38
-@modify date 2022-02-01 16:56:07
+@modify date 2022-02-02 00:16:27
 @desc [description]
 -->
 
@@ -103,8 +103,7 @@
                      <a href="{% url 'aluno:listar-reclamacao' %}" class="menu-item">Listar Reclamação Solicitadas</a>
                     <a href="{% url 'curso:adicionarNovo-cursos' %}" class="menu-item">Adicionar novo Curso</a>
                     <a href="{% url 'curso:listar-cursos' %}" class="menu-item">Listar Cursos</a>
-                     <a href="{% url 'docente:definirOrientador-tese' %}" class="menu-item">Definir Docente</br> Para Tese / TCC</a>
-                    <a href="{% url 'curso:listar-cursos' %}" class="menu-item">Listar Docentes Orientadores</a>
+                     
                     </div>
                 </div>
                 <div class="nav-lavel">BIBILOTECA</div>
@@ -158,6 +157,8 @@
                   <div class="submenu-content">
                     <a href="{% url 'docente:adicionar-docente' %}" class="menu-item">Novo cadastro do Docente</a>
                     <a href="{% url 'docente:listar-docente' %}" class="menu-item">Listar Docentes</a>
+                    <a href="{% url 'docente:definirOrientador-tese' %}" class="menu-item">Definir Docente</br> Para Tese / TCC</a>
+                    <a href="{% url 'docente:listar-Orientador-teseTcc' %}" class="menu-item">Listar Docentes Orientadores</a>
                     <a href="pages/form-addon.html" class="menu-item">Atribuir Unidade </br> Curricular ao Docente</a>
                     <a href="pages/form-advance.html" class="menu-item">Consultar Docente</a>
                   </div>

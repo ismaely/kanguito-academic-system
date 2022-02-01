@@ -16,7 +16,7 @@ class DocenteAdmin(admin.ModelAdmin):
         return obj.grau_academico.nome
 
 class OrientadorAdmin(admin.ModelAdmin):
-    list_display = ('__str__','docente', 'curso','estado')
+    list_display = ('__str__','docente', 'curso','estado','numero_orientados')
     
     @admin.display(ordering='pessoa_nome')
     def docente(self, obj):

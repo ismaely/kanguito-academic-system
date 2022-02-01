@@ -22,12 +22,13 @@ class Docente_Form(ModelForm):
 class OrientadorFrom(ModelForm):
     class Meta:
         model = Orientador
-        fields = ['docente','curso', 'data_limite', 'estado']
+        fields = ['docente','curso', 'data_limite', 'estado','numero_orientados']
         widgets = {
             'docente': forms.Select( attrs={'class': 'form-control '}),
             'estado': forms.Select( attrs={'class': 'form-control '}),
             'curso': forms.Select( attrs={'class': 'form-control '}),
             'data_limite': forms.DateInput(attrs={'type': 'date','class': 'form-control'}),
+            'numero_orientados': forms.NumberInput(attrs={'type': 'integer','class': 'form-control'}),
         }
 
 
