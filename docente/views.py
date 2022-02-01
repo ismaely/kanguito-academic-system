@@ -1,10 +1,10 @@
 from django.shortcuts import render
 import sweetify
 from django.db.models import Q
-from docente.models import Docente
+from docente.models import Docente, Orientador
 from pessoa.models import Pessoa
 from pessoa.forms import Pessoa_Form
-from docente.forms import Docente_Form, ConsultarForm
+from docente.forms import Docente_Form, ConsultarForm, OrientadorFrom
 from config.views import prepara_foto
 
 # Create your views here.
@@ -15,6 +15,25 @@ def listar_docente(request):
     lista =  Docente.objects.select_related('pessoa').all().order_by('-pessoa')
     context = {'lista': lista}
     return render (request, 'docente/listar_docente.html', context)
+
+
+def listar_Orientador_teseTcc(request):
+    
+    lista =  Orientador.objects.select_related('pessoa').all().order_by('-pessoa')
+    context = {'lista': lista}
+    return render (request, 'docente/listar_docente.html', context)
+
+
+def definirOrientador_teseTcc(request):
+    form = OrientadorFrom(request.POST or None)
+    if request.method == 'POST':
+        if form.is_valid():
+            form.save()
+            sweetify.success(request,'Orientador definido com sucesso', button='Ok', timer='3100', persistent="Close")
+
+            form = OrientadorFrom()
+    context = {'form': form}
+    return render (request, 'docente/definirOrientador_teseTcc.html', context)
 
 
 #@login_required

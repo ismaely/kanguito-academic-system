@@ -45,7 +45,8 @@ class Docente(models.Model):
     updated = models.DateTimeField(auto_now_add=True)
 
     def __str__ (self):
-        return '%d'  % (self.id)
+        return '%s'  % (self.pessoa.nome)
+
 
 class Orientador(models.Model):
     docente = models.ForeignKey(Docente, on_delete=models.CASCADE, parent_link=True)

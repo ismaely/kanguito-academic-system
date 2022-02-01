@@ -1,0 +1,52 @@
+<!--
+@author [Gunza Ismael]
+@email [7ilip@gmail.com]
+@create date 2022-02-01 13:56:12
+@modify date 2022-02-01 14:04:48
+@desc [description]
+-->
+
+{% extends 'home_base.html' %}{% block corpo %}{% load static %}
+<div class="row">
+  <div class="col-md-3"></div>
+  <div class="col-md-6">
+    <div class="card" style="min-height: 484px">
+      {% if pk is not null %}
+      <div class="card-header"><h3>Definir Docente Como Orientador de TCC</h3></div>
+      <div class="card-body">
+        <form class="forms-sample" action="{% url 'docente:definirOrientador-tese' pk %}" method="POST">
+        {% else %}
+        <div class="card-header"><h3>Definir Docente Como Orientador de TCC</h3></div>
+        <div class="card-body">
+          <form class="forms-sample" action="{% url 'docente:definirOrientador-tese' %}" method="POST">
+            {% endif %} {% csrf_token %} {% autoescape on %}
+            <div class="form-group row">
+              <label  class="col-sm-3 col-form-label">Docente</label>
+              <div class="col-sm-9">{{ form.docente }}{{ form.docente.errors }}</div>
+            </div>
+            <div class="form-group row">
+              <label for="exampleInputEmail2" class="col-sm-3 col-form-label">Curso</label>
+              <div class="col-sm-9">{{ form.curso }}{{ form.curso.errors }}</div>
+            </div>
+
+            <div class="form-group row">
+              <label for="exampleInputMobile" class="col-sm-3 col-form-label">Desponibilidade</label>
+              <div class="col-sm-9">{{ form.estado }}{{ form.estado.errors }}</div>
+            </div>
+            <div class="form-group row">
+              <label for="exampleInputMobile" class="col-sm-3 col-form-label">Data limite de candidatura</label>
+              <div class="col-sm-9">{{ form.data_limite }}{{ form.data_limite.errors }}</div>
+            </div>
+            
+            <div class="form-group">
+              <div id="visitfromworld" style="width: 100%; height: 50px"></div>
+            </div>
+            <button type="submit" class="btn btn-primary mr-2" style="width: 100%">Salvar</button>
+            {% endautoescape %}
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  {% endblock %}
+</div>
