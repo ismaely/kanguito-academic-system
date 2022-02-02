@@ -25,6 +25,31 @@ def listar_Orientador_teseTcc(request):
     return render (request, 'docente/listar_Orientador.html', context)
 
 
+def abriCandidatura_Orientador_teseTcc(request, pk):
+    if pk > 0:
+        orientador = Orientador.objects.get(id=pk)
+        orientador.estado_id = 1
+        orientador.save()
+        sweetify.success(request,'Candidatura aberta com sucesso', button='Ok', timer='3100', persistent="Close")
+        return HttpResponseRedirect(reverse('docente:listar-Orientador-teseTcc'))
+
+    sweetify.error(request,'solicitação invalida', button='Ok', timer='3100', persistent="Close")
+    return HttpResponseRedirect(reverse('docente:listar-Orientador-teseTcc'))
+
+
+def fecharCandidatura_Orientador_teseTcc(request, pk):
+    if pk > 0:
+        orientador = Orientador.objects.get(id=pk)
+        orientador.estado_id = 3
+        orientador.save()
+        sweetify.success(request,'Candidatura encerrada com sucesso', button='Ok', timer='3100', persistent="Close")
+        return HttpResponseRedirect(reverse('docente:listar-Orientador-teseTcc'))
+
+    sweetify.error(request,'solicitação invalida', button='Ok', timer='3100', persistent="Close")
+    return HttpResponseRedirect(reverse('docente:listar-Orientador-teseTcc'))
+
+
+
 def definirOrientador_teseTcc(request):
     form = OrientadorFrom(request.POST or None)
     if request.method == 'POST':
