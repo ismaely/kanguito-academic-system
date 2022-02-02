@@ -35,6 +35,21 @@ def definirOrientador_teseTcc(request):
     return render (request, 'docente/definirOrientador_teseTcc.html', context)
 
 
+
+def atualizar_definirOrientador_teseTcc(request, pk):
+    orientador = Orientador.objects.get(id=pk)
+    form = OrientadorFrom(request.POST or None, instance=orientador)
+    if request.method == 'POST':
+        if form.is_valid():
+            form.save()
+            sweetify.success(request,'Dados atualizado com sucesso', button='Ok', timer='3100', persistent="Close")
+            form = OrientadorFrom()
+
+    context = {'form': form, pk: 'pk'}
+    return render (request, 'docente/definirOrientador_teseTcc.html', context)
+
+
+
 #@login_required
 def consultar_dados_docente(request):
     form = ConsultarForm(request.POST or None)
