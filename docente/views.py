@@ -1,4 +1,6 @@
 from django.shortcuts import render
+from django.http import HttpResponseRedirect
+from django.urls import reverse
 import sweetify
 from django.db.models import Q
 from docente.models import Docente, Orientador
@@ -43,9 +45,9 @@ def atualizar_definirOrientador_teseTcc(request, pk):
         if form.is_valid():
             form.save()
             sweetify.success(request,'Dados atualizado com sucesso', button='Ok', timer='3100', persistent="Close")
-            form = OrientadorFrom()
+            return HttpResponseRedirect(reverse('docente:listar-Orientador-teseTcc'))
 
-    context = {'form': form, pk: 'pk'}
+    context = {'form': form, 'pk': pk}
     return render (request, 'docente/definirOrientador_teseTcc.html', context)
 
 
