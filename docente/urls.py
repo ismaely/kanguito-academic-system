@@ -11,5 +11,7 @@ urlpatterns = [
   path('atualizar_dados_docente/<int:pk>/', views.atualizar_dados_docente, name='atualizar-dados-docente'),
   path('definirOrientador_teseTcc', views.definirOrientador_teseTcc, name='definirOrientador-tese'),
   path('listar_Orientador_teseTcc/', views.listar_Orientador_teseTcc, name='listar-Orientador-teseTcc'),
-
+  path('atualizar_definirOrientador_teseTcc/<int:pk>/', views.atualizar_definirOrientador_teseTcc, name='atualizar-definirOrientador-teseTcc'),
+  path('fecharCandidatura_Orientador_teseTcc/<int:pk>/', views.fecharCandidatura_Orientador_teseTcc, name='fecharCandidatura-Orientador-teseTcc'), 
+  path('abriCandidatura_Orientador_teseTcc/<int:pk>/', views.abriCandidatura_Orientador_teseTcc, name='abriCandidatura-Orientador-teseTcc'),
 ]

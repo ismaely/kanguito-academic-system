@@ -2,7 +2,7 @@
 @author [Gunza Ismael]
 @email [7ilip@gmail.com]
 @create date 2021-09-26 12:33:14
-@modify date 2022-02-02 00:14:38
+@modify date 2022-02-02 14:03:56
 @desc [description]
 -->
 
@@ -30,7 +30,12 @@
           </td>
           <td class="">Dr. {{ dados.docente.pessoa.nome|upper }}</td>
           <td class="">{{ dados.curso.nome }}</td>
-          <td class="">{{ dados.estado|lower }}</td>
+
+          {% if dados.estdo.id == 3 %}
+          <td class="alert bg-danger alert-danger text-white" role="alert">{{ dados.estado}}</td>
+          {% else %}
+          <td class="alert bg-success alert-success text-white" role="alert">{{ dados.estado }}</td>
+          {% endif %}
           <td class="">{{ dados.numero_orientados }}</td>
           <td class="">{{ dados.data_limite }}</td>
           <td>
@@ -40,9 +45,13 @@
                   >Acção <i class="ik ik-chevron-down"></i
                 ></a>
                 <div class="dropdown-menu">
-                  <a class="dropdown-item" href="">Atualizar</a>
-                  <a class="dropdown-item" href="">Abri a Candidatura</a>
-                  <a class="dropdown-item" href="">Fechar a Candidatura</a>
+                  <a class="dropdown-item" href="{% url 'docente:atualizar-definirOrientador-teseTcc' dados.id %}">Atualizar</a>
+                  {% if dados.estdo_id != 3 %}
+                  <a class="dropdown-item" data-toggle="modal" data-target="#exampleModalLong">Solicitar o Orientador</a>
+                  {% endif %}
+
+                  <a class="dropdown-item" href="{% url 'docente:abriCandidatura-Orientador-teseTcc' dados.id %}">Abri a Candidatura</a>
+                  <a class="dropdown-item" href="{% url 'docente:fecharCandidatura-Orientador-teseTcc' dados.id %}">Fechar a Candidatura</a>
                   <div class="dropdown-divider"></div>
                 </div>
               </li>
@@ -55,4 +64,27 @@
     </table>
   </div>
 </div>
+
+<div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongLabel">Solicitar o orientador para orientação do TCC</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      </div>
+      <div class="modal-body">
+        <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+        <p>
+          Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus
+          auctor fringilla.
+        </p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Enviar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 {% endblock %}

@@ -1,4 +1,6 @@
 from django.shortcuts import render
+from django.http import HttpResponseRedirect
+from django.urls import reverse
 import sweetify
 from django.db.models import Q
 from docente.models import Docente, Orientador
@@ -23,6 +25,31 @@ def listar_Orientador_teseTcc(request):
     return render (request, 'docente/listar_Orientador.html', context)
 
 
+def abriCandidatura_Orientador_teseTcc(request, pk):
+    if pk > 0:
+        orientador = Orientador.objects.get(id=pk)
+        orientador.estado_id = 1
+        orientador.save()
+        sweetify.success(request,'Candidatura aberta com sucesso', button='Ok', timer='3100', persistent="Close")
+        return HttpResponseRedirect(reverse('docente:listar-Orientador-teseTcc'))
+
+    sweetify.error(request,'solicitação invalida', button='Ok', timer='3100', persistent="Close")
+    return HttpResponseRedirect(reverse('docente:listar-Orientador-teseTcc'))
+
+
+def fecharCandidatura_Orientador_teseTcc(request, pk):
+    if pk > 0:
+        orientador = Orientador.objects.get(id=pk)
+        orientador.estado_id = 3
+        orientador.save()
+        sweetify.success(request,'Candidatura encerrada com sucesso', button='Ok', timer='3100', persistent="Close")
+        return HttpResponseRedirect(reverse('docente:listar-Orientador-teseTcc'))
+
+    sweetify.error(request,'solicitação invalida', button='Ok', timer='3100', persistent="Close")
+    return HttpResponseRedirect(reverse('docente:listar-Orientador-teseTcc'))
+
+
+
 def definirOrientador_teseTcc(request):
     form = OrientadorFrom(request.POST or None)
     if request.method == 'POST':
@@ -33,6 +60,21 @@ def definirOrientador_teseTcc(request):
 
     context = {'form': form}
     return render (request, 'docente/definirOrientador_teseTcc.html', context)
+
+
+
+def atualizar_definirOrientador_teseTcc(request, pk):
+    orientador = Orientador.objects.get(id=pk)
+    form = OrientadorFrom(request.POST or None, instance=orientador)
+    if request.method == 'POST':
+        if form.is_valid():
+            form.save()
+            sweetify.success(request,'Dados atualizado com sucesso', button='Ok', timer='3100', persistent="Close")
+            return HttpResponseRedirect(reverse('docente:listar-Orientador-teseTcc'))
+
+    context = {'form': form, 'pk': pk}
+    return render (request, 'docente/definirOrientador_teseTcc.html', context)
+
 
 
 #@login_required

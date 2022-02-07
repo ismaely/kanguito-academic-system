@@ -2,7 +2,7 @@
 @author [Gunza Ismael]
 @email [7ilip@gmail.com]
 @create date 2022-02-01 13:56:12
-@modify date 2022-02-01 23:53:40
+@modify date 2022-02-02 01:52:46
 @desc [description]
 -->
 
@@ -14,7 +14,7 @@
       {% if pk is not null %}
       <div class="card-header"><h3>Definir Docente Como Orientador de TCC</h3></div>
       <div class="card-body">
-        <form class="forms-sample" action="{% url 'docente:definirOrientador-tese' pk %}" method="POST">
+        <form class="forms-sample" action="{% url 'docente:atualizar-definirOrientador-teseTcc' pk %}" method="POST">
         {% else %}
         <div class="card-header"><h3>Definir Docente Como Orientador de TCC</h3></div>
         <div class="card-body">
