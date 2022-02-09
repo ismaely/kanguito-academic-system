@@ -16,7 +16,6 @@ from config.views import gerarNumeroEstudante, retornaId
 class Aluno_Form(ModelForm):
     class Meta:
         curso = forms.CharField(max_length=10, required=False, widget=forms.TextInput(attrs={'class': 'form-control'}))
-        #numero_estudante = forms.CharField(max_length=10, required=False, widget=forms.TextInput(attrs={'class': 'form-control'}))
         model = Aluno
         fields = ['media_conclusao', 'instituicao_origem', 'numero_estudante', 'grau_academico','area_formacao', 'curso_frequentado']
         widgets = {
@@ -35,9 +34,8 @@ class Aluno_Form(ModelForm):
 
 
 class Matricula_Form(ModelForm):
+    aluno = forms.CharField(max_length=20, required=False, widget=forms.TextInput(attrs={'class': 'form-control'}))
     class Meta: 
-        aluno = forms.CharField(max_length=20, required=False, widget=forms.TextInput(attrs={'class': 'form-control'}))
-        #numero_estudante = forms.CharField(max_length=10, required=False, widget=forms.TextInput(attrs={'class': 'form-control'}))
         model = Matricula
         fields = ['curso', 'opcao_matricula', 'ano', 'tremestre','periodo','nota_exame','dataMatricula']
         widgets = {
@@ -75,11 +73,11 @@ class Reclamacao_Form(ModelForm):
 
 
 class Confirmar_Matricula_Form(ModelForm):
+    aluno = forms.CharField(max_length=10, required=False, widget=forms.TextInput(attrs={'class': 'form-control'}))
+    tremestre = forms.CharField(max_length=60,required=False,  widget=forms.Select(choices="", attrs={'class': 'form-control ajax_tremestre'}))
     class Meta:
-        aluno = forms.CharField(max_length=10, required=False, widget=forms.TextInput(attrs={'class': 'form-control'}))
-        tremestre = forms.CharField(max_length=60,required=False,  widget=forms.Select(choices="", attrs={'class': 'form-control ajax_tremestre'}))
         model = Confirmar_Matricula
-        fields = ['curso', 'periodo', 'ano', 'data_confirmacao','numero_recibo', 'cadeiras_atraso']
+        fields = ['curso', 'periodo', 'ano', 'data_confirmacao', 'numero_recibo', 'cadeiras_atraso']
         widgets = {
             'curso': forms.Select( attrs={'class': 'form-control '}),
             'periodo': forms.Select( attrs={'class': 'form-control'}),
@@ -88,6 +86,7 @@ class Confirmar_Matricula_Form(ModelForm):
             'cadeiras_atraso': forms.Select(attrs={'class': 'form-control '}),
             'numero_recibo': forms.TextInput(attrs={'class': 'form-control'}),
             'responsavel': forms.TextInput(attrs={'class': 'form-control'}),
+            #'tremestre': forms.TextInput(attrs={'class': 'form-control'}),
         }
     
 

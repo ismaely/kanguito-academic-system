@@ -5,4 +5,5 @@ from . import views
 app_name = 'ajax'
 urlpatterns = [
     path('retorna_municipio/', views.retorna_municipio, name="retorna-municipio"),
+    path('retorna_tremestre/', views.retorna_tremestre, name="retorna-tremestre"),
 ]
