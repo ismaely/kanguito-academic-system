@@ -41,3 +41,21 @@ def retorna_tremestre(request):
         return JsonResponse(dados)
     except ValueError:
         print(" ERRO RETORNO OS TREMESTRE")
+
+
+# seleciona o curso e retorna todas as cadeiras relacionada com o curso
+def retorna_as_unidadeCurricular(request):
+    try:
+        dados = dict()
+        if request.method == 'POST':
+            valor = []
+            valor = request.body.decode('utf-8')
+            valor = json.loads(valor)
+            id = valor['id']
+            lista = [(k.id, k.nome)for k in UnidadeCurricular_Curso.objects.filter(CURSO_id=int(id))]
+            dados = {
+                'resposta':  lista,
+            }
+        return JsonResponse(dados)
+    except ValueError:
+        print(" ERRO NO RETORNO DA UNIDADE Curricular ")

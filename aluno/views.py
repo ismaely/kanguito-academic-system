@@ -41,8 +41,9 @@ def confirmacao_matricula(request):
             recl = form.save(commit=False)
             recl.aluno_id = form.cleaned_data['aluno']
             recl.save()
-            sweetify.success(request, 'Reclamação feita com sucesso!...', button='Ok', timer='3100', persistent="Close")
-            form = Reclamacao_Form()
+            sweetify.success(request, 'confirmação feita com sucesso!...', button='Ok', timer='3100', persistent="Close")
+            context = {'pessoa': form.instance}
+            return render (request, 'aluno/reciboInscricao.html', context)
 
     context = {'form': form}
     return render(request, 'aluno/confirmacao_matricula.html', context)

@@ -75,15 +75,16 @@ class Reclamacao_Form(ModelForm):
 class Confirmar_Matricula_Form(ModelForm):
     aluno = forms.CharField(max_length=10, required=False, widget=forms.TextInput(attrs={'class': 'form-control'}))
     tremestre = forms.CharField(max_length=60,required=False,  widget=forms.Select(choices="", attrs={'class': 'form-control ajax_tremestre'}))
+    cadeiras_atraso = forms.CharField(max_length=60,required=False,  widget=forms.Select(choices="", attrs={'class': 'form-control cadeiras_atraso'}))
     class Meta:
         model = Confirmar_Matricula
         fields = ['curso', 'periodo', 'ano', 'data_confirmacao', 'numero_recibo', 'cadeiras_atraso']
         widgets = {
-            'curso': forms.Select( attrs={'class': 'form-control '}),
+            'curso': forms.Select( attrs={'class': 'form-control ajax_curso'}),
             'periodo': forms.Select( attrs={'class': 'form-control'}),
             'ano': forms.Select( attrs={'class': 'form-control ajax_tremestre'}),
             'data_confirmacao': forms.DateInput(attrs={'type': 'date','class': 'form-control'}),
-            'cadeiras_atraso': forms.Select(attrs={'class': 'form-control '}),
+            #'cadeiras_atraso': forms.Select(attrs={'class': 'form-control '}),
             'numero_recibo': forms.TextInput(attrs={'class': 'form-control'}),
             'responsavel': forms.TextInput(attrs={'class': 'form-control'}),
             #'tremestre': forms.TextInput(attrs={'class': 'form-control'}),
