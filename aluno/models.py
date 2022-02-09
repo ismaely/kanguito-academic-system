@@ -4,6 +4,7 @@ from django.utils import timezone
 from pessoa.models import Pessoa
 from config.models import Opcao_Matricula, Periodo, Tremestre,Ano, Grau_academico
 from curso.models import Curso
+from docente.models import Orientador
 # Create your models here.
 
 
@@ -32,7 +33,6 @@ class Aluno(models.Model):
     def __str__ (self):
         return self.id
     
-
 
 class Matricula(models.Model):
     aluno = models.ForeignKey(Aluno, on_delete=models.CASCADE, parent_link=True)
@@ -64,3 +64,37 @@ class Reclamacao(models.Model):
     @admin.display(ordering='-aluno')
     def __str__ (self):
         return self.id
+
+
+
+"""class Confirmar_Matricula(models.Model):
+    aluno = models.ForeignKey(Aluno, on_delete=models.CASCADE, parent_link=True)
+    # matricula = models.ForeignKey(Matricula, on_delete=models.CASCADE, parent_link=True)
+    ano = models.ForeignKey(Ano, on_delete=models.CASCADE, blank=True, null=True, parent_link=True)
+    Tremestre = models.ForeignKey(Tremestre, on_delete=models.CASCADE, blank=True, null=True, parent_link=True)
+    data = models.CharField(max_length=20, blank=True, null=True)
+    periodo = models.ForeignKey(Periodo, on_delete=models.SET_NULL, blank=True, null=True, parent_link=True)
+    estado = models.ForeignKey(Estado_Inscricao, on_delete=models.SET_NULL, blank=True, null=True, parent_link=True, default=1)
+    responsavel = models.CharField(max_length=190, blank=True, null=True)
+    numero_recibo = models.CharField(max_length=15, blank=True, null=True)
+    created = models.DateField(blank=True, null=True)
+    updated = models.DateTimeField(auto_now_add=True)
+
+    def __str__ (self):
+        return self.id
+"""
+
+"""class Orientacao_Tcc(models.Model):
+    aluno = models.ForeignKey(Aluno, on_delete=models.CASCADE, parent_link=True)
+    curso = models.ForeignKey(Curso, on_delete=models.CASCADE, parent_link=True)
+    orientador = models.ForeignKey(Orientador, on_delete=models.CASCADE, parent_link=True)
+    data_candidatura = models.DateField(default=timezone.now)
+    estado = models.CharField(max_length=20, null=True, default="Em Analise")
+    descricao = models.CharField(max_length=3000, null=True, default="")
+    created = models.DateField(blank=True, null=True)
+    updated = models.DateTimeField(auto_now_add=True)
+
+    @admin.display(ordering='-aluno')
+    def __str__ (self):
+        return self.id
+"""
