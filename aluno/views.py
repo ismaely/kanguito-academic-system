@@ -3,7 +3,7 @@ from django.http import HttpResponseRedirect
 from django.urls import reverse
 import sweetify
 from environment.env import DATA_HORA_ZONA, DATA_ANO
-from aluno.forms import Aluno_Form, Matricula_Form, Reclamacao_Form
+from aluno.forms import Aluno_Form, Matricula_Form, Reclamacao_Form, Confirmar_Matricula_Form
 from pessoa.forms import Pessoa_Form
 from config.views import prepara_foto
 from aluno.models import Reclamacao
@@ -14,7 +14,6 @@ from aluno.models import Reclamacao
 def listar_reclamacao(request):
     lista =  Reclamacao.objects.select_related('aluno').all()
     context = {'lista': lista}
-    
     return render(request, 'aluno/listar_reclamacao.html', context)
 
 
@@ -28,9 +27,25 @@ def efectuar_reclamacao(request):
             recl.save()
             sweetify.success(request, 'Reclamação feita com sucesso!...', button='Ok', timer='3100', persistent="Close")
             form = Reclamacao_Form()
-
     context = {'form': form}
     return render(request, 'aluno/efecturReclamacao.html', context)
+
+
+"""
+[FUNÇÃO QUE VAI FAZER A CONFIRMAÇÃO DE MATRICULA DO ESTUDANTE]
+"""
+def confirmacao_matricula(request):
+    form = Confirmar_Matricula_Form(request.POST or None)
+    if request.method == 'POST':
+        if form.is_valid():
+            recl = form.save(commit=False)
+            recl.aluno_id = form.cleaned_data['aluno']
+            recl.save()
+            sweetify.success(request, 'Reclamação feita com sucesso!...', button='Ok', timer='3100', persistent="Close")
+            form = Reclamacao_Form()
+
+    context = {'form': form}
+    return render(request, 'aluno/confirmacao_matricula.html', context)
 
 
 
@@ -42,7 +57,6 @@ def adicionarNovoCadastro_aluno(request):
         form = Pessoa_Form(request.POST, request.FILES or None)
         if form.is_valid() and form2.is_valid():
             curso = request.POST.get('curso')
-           
             pessoa = form.save(commit=False)
             pessoa.municipio_id = form.cleaned_data.get('municipio')
             if len(request.POST['foto']) > 0:
@@ -58,9 +72,7 @@ def adicionarNovoCadastro_aluno(request):
             resp = form3.save(commit=False)
             resp.aluno_id = dados.id
             resp.save()
-
             sweetify.success(request, 'Dados registado com sucesso!....', button='Ok', timer='3100', persistent="Close")
-
             context = {'pessoa': form.instance, 'aluno': form2.instance, 'matricula': form3.instance}
             return render (request, 'aluno/reciboInscricao.html', context)
 

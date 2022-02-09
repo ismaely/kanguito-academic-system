@@ -5,6 +5,7 @@ from pessoa.models import Pessoa
 from config.models import Opcao_Matricula, Periodo, Tremestre,Ano, Grau_academico
 from curso.models import Curso
 from docente.models import Orientador
+from unidade_curricular.models import UnidadeCurricular_Curso
 # Create your models here.
 
 
@@ -67,22 +68,25 @@ class Reclamacao(models.Model):
 
 
 
-"""class Confirmar_Matricula(models.Model):
+class Confirmar_Matricula(models.Model):
     aluno = models.ForeignKey(Aluno, on_delete=models.CASCADE, parent_link=True)
-    # matricula = models.ForeignKey(Matricula, on_delete=models.CASCADE, parent_link=True)
+    curso = models.ForeignKey(Curso, on_delete=models.CASCADE, parent_link=True)
     ano = models.ForeignKey(Ano, on_delete=models.CASCADE, blank=True, null=True, parent_link=True)
-    Tremestre = models.ForeignKey(Tremestre, on_delete=models.CASCADE, blank=True, null=True, parent_link=True)
-    data = models.CharField(max_length=20, blank=True, null=True)
+    tremestre = models.ForeignKey(Tremestre, on_delete=models.CASCADE, blank=True, null=True, parent_link=True)
+    data_confirmacao = models.DateField(default=timezone.now)
     periodo = models.ForeignKey(Periodo, on_delete=models.SET_NULL, blank=True, null=True, parent_link=True)
-    estado = models.ForeignKey(Estado_Inscricao, on_delete=models.SET_NULL, blank=True, null=True, parent_link=True, default=1)
+    cadeiras_atraso = models.ManyToManyField(UnidadeCurricular_Curso,  blank=True, null=True)
     responsavel = models.CharField(max_length=190, blank=True, null=True)
     numero_recibo = models.CharField(max_length=15, blank=True, null=True)
     created = models.DateField(blank=True, null=True)
     updated = models.DateTimeField(auto_now_add=True)
 
+    class Meta:
+        ordering = ["-aluno"]
+
     def __str__ (self):
         return self.id
-"""
+
 
 """class Orientacao_Tcc(models.Model):
     aluno = models.ForeignKey(Aluno, on_delete=models.CASCADE, parent_link=True)
