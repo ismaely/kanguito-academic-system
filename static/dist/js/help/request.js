@@ -2,7 +2,7 @@
  * @author [Gunza Ismael]
  * @email [7ilip@gmail.com]
  * @create date 2021-10-15 00:59:34
- * @modify date 2022-02-09 18:57:39
+ * @modify date 2022-02-10 08:18:15
  * @desc [description]
  */
 
@@ -101,11 +101,11 @@ $(document).ready(function () {
     /**
      * Função que vai retorna todos os tremestre qdo selecionar ao ano
      */
-    $('.ajax_tremestre').click(function () {
+    $('.ajax_ano').click(function () {
         $.ajax({
             url: '/ajax/retorna_tremestre/',
             type: 'POST',
-            data: JSON.stringify({ 'id': $('.ajax_tremestre').val() }),
+            data: JSON.stringify({ 'id': $('.ajax_ano').val() }),
             dataType: 'json',
             headers: {
                 'X-CSRFToken': getCookie('csrftoken'),
@@ -136,7 +136,47 @@ $(document).ready(function () {
 
     });
 
+
+
+
+    $('.ajax_curso').click(function () {
+        $.ajax({
+            url: '/ajax/retorna_as_unidadeCurricular/',
+            type: 'POST',
+            data: JSON.stringify({ 'id': $('.ajax_curso').val() }),
+            dataType: 'json',
+            headers: {
+                'X-CSRFToken': getCookie('csrftoken'),
+                'Accept': 'application/json',
+                'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
+            },
+            success: function (data) {
+                var inputSelect = document.getElementById("id_cadeiras_atraso");
+                var cont = 1;
+                while (inputSelect.options.length) {
+                    inputSelect.remove(0);
+                }
+                for (let k = 0; k < data.resposta.length; k++) {
+                    var resp = data.resposta[k];
+                    var novos = ""
+                    novos = new Option(resp[1], resp[0]);
+                    inputSelect.options.add(novos)
+                    cont = cont + 1;
+                }
+
+            },
+            error: function () {
+                console.log('erro na busca dos tremestre')
+            }
+        });
+
+        getCookie(name)
+
+    });
+
 });
+
+
 
 $(function () {
     $('.maiuscula').keyup(function () {

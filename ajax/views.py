@@ -52,7 +52,7 @@ def retorna_as_unidadeCurricular(request):
             valor = request.body.decode('utf-8')
             valor = json.loads(valor)
             id = valor['id']
-            lista = [(k.id, k.nome)for k in UnidadeCurricular_Curso.objects.filter(CURSO_id=int(id))]
+            lista = [(k.id, k.unidade_curricular.nome)for k in UnidadeCurricular_Curso.objects.filter(curso_id=int(id))]
             dados = {
                 'resposta':  lista,
             }
