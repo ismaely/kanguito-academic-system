@@ -84,10 +84,8 @@ class Confirmar_Matricula_Form(ModelForm):
             'periodo': forms.Select( attrs={'class': 'form-control'}),
             'ano': forms.Select( attrs={'class': 'form-control ajax_ano'}),
             'data_confirmacao': forms.DateInput(attrs={'type': 'date','class': 'form-control'}),
-            #'cadeiras_atraso': forms.Select(attrs={'class': 'form-control '}),
             'numero_recibo': forms.TextInput(attrs={'class': 'form-control'}),
             'responsavel': forms.TextInput(attrs={'class': 'form-control'}),
-            #'tremestre': forms.TextInput(attrs={'class': 'form-control'}),
         }
     def clean_aluno(self):
         aluno = self.cleaned_data.get('aluno')

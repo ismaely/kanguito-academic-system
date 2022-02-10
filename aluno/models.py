@@ -27,7 +27,7 @@ class Aluno(models.Model):
     curso_frequentado = models.CharField(max_length=190)
     media_conclusao = models.CharField(max_length=2, blank=True, null=True)
     instituicao_origem = models.CharField(max_length=120)
-    created = models.DateField(blank=True, null=True)
+    created = models.DateField(auto_now=True)
     updated = models.DateTimeField(auto_now_add=True)
 
     @admin.display(ordering='-pessoa_nome')
@@ -44,7 +44,7 @@ class Matricula(models.Model):
     periodo = models.ForeignKey(Periodo, on_delete=models.CASCADE, parent_link=True)
     dataMatricula = models.DateField(default=timezone.now)
     nota_exame = models.CharField(max_length=2, null=True,blank=True, default=" ")
-    created = models.DateField(blank=True, null=True)
+    created = models.DateField(auto_now=True)
     updated = models.DateTimeField(auto_now_add=True)
 
     def __str__ (self):
@@ -59,7 +59,7 @@ class Reclamacao(models.Model):
     data_reclamacao = models.DateField(default=timezone.now)
     estado = models.CharField(max_length=20, null=True, default="Em Analise")
     descricao = models.CharField(max_length=3000, null=True, default="")
-    created = models.DateField(blank=True, null=True)
+    created = models.DateField(auto_now=True)
     updated = models.DateTimeField(auto_now_add=True)
 
     @admin.display(ordering='-aluno')
@@ -78,7 +78,7 @@ class Confirmar_Matricula(models.Model):
     cadeiras_atraso = models.ManyToManyField(UnidadeCurricular_Curso,  blank=True, null=True)
     responsavel = models.CharField(max_length=190, blank=True, null=True)
     numero_recibo = models.CharField(max_length=15, blank=True, null=True)
-    created = models.DateField(blank=True, null=True)
+    created = models.DateField(auto_now=True)
     updated = models.DateTimeField(auto_now_add=True)
 
     class Meta:
@@ -95,7 +95,7 @@ class Confirmar_Matricula(models.Model):
     data_candidatura = models.DateField(default=timezone.now)
     estado = models.CharField(max_length=20, null=True, default="Em Analise")
     descricao = models.CharField(max_length=3000, null=True, default="")
-    created = models.DateField(blank=True, null=True)
+    created = models.DateField(auto_now=True)
     updated = models.DateTimeField(auto_now_add=True)
 
     @admin.display(ordering='-aluno')

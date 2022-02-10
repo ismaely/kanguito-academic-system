@@ -40,6 +40,7 @@ def confirmacao_matricula(request):
         if form.is_valid():
             recl = form.save(commit=False)
             recl.aluno_id = form.cleaned_data['aluno']
+            recl.tremestre_id = form.cleaned_data['tremestre']
             recl.save()
             sweetify.success(request, 'confirmação feita com sucesso!...', button='Ok', timer='3100', persistent="Close")
             context = {'pessoa': form.instance}
