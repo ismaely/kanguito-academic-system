@@ -2,7 +2,7 @@
 @author [Gunza Ismael]
 @email [7ilip@gmail.com]
 @create date 2021-09-26 13:03:25
-@modify date 2022-01-29 14:03:23
+@modify date 2022-02-10 09:10:34
 @desc [description]
 -->
 {% extends 'home_base.html' %}{% block corpo %}{% load static %}
@@ -173,12 +173,6 @@
                   {{ form3.periodo }} {{ form3.periodo.errors }}
                 </div>
               </div>
-              <div class="col-md-4">
-                <div class="form-group">
-                  <label for="exampleInputEmail3">Tremestre <span class="text-danger">*</span></label>
-                  {{ form3.tremestre }} {{ form3.tremestre.errors }}
-                </div>
-              </div>
 
               <div class="col-md-4">
                 <div class="form-group">
@@ -186,6 +180,15 @@
                   {{ form3.ano }} {{ form3.ano.errors }}
                 </div>
               </div>
+              
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label for="exampleInputEmail3">Tremestre <span class="text-danger">*</span></label>
+                  {{ form3.tremestre }} {{ form3.tremestre.errors }}
+                </div>
+              </div>
+
+              
             </div>
 
             <div class="row">

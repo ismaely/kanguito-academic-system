@@ -3,9 +3,14 @@ from config.models import (Periodo, Provincia, Grau_academico, Municipio, Tremes
  Estado_Civil, Pais, Ano, Opcao_Matricula, Contador_Numero )
 # Register your models here.
 
+class TremestreAdmin(admin.ModelAdmin):
+    list_display = ('__str__','nome', 'ano')
+  
+    def ano_nome(self, obj):
+        return obj.ano.nome
 
 admin.site.register(Provincia)
-admin.site.register(Tremestre)
+admin.site.register(Tremestre, TremestreAdmin)
 admin.site.register(Periodo)
 admin.site.register(Grau_academico)
 admin.site.register(Municipio)

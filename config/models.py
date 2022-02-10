@@ -43,14 +43,15 @@ class Documento_identificacao(models.Model):
         return "%s" % (self.nome)
 
 
-class Tremestre(models.Model):
+class Ano(models.Model):
     nome = models.CharField(max_length=100,  blank=True, null=True)
     def __str__(self):
         return  "%s" % (self.nome)
 
 
-class Ano(models.Model):
+class Tremestre(models.Model):
     nome = models.CharField(max_length=100,  blank=True, null=True)
+    ano = models.ForeignKey(Ano, on_delete=models.CASCADE, parent_link=True)
     def __str__(self):
         return  "%s" % (self.nome)
 

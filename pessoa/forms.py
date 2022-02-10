@@ -15,7 +15,7 @@ class Pessoa_Form(ModelForm):
     nome = forms.CharField(max_length=100, widget=forms.TextInput(attrs={'class': 'form-control '}))
     nome_pai = forms.CharField(max_length=100, required=False,  widget=forms.TextInput(attrs={'class': 'form-control '}))
     nome_mae = forms.CharField(max_length=100, required=False, widget=forms.TextInput(attrs={ 'class': 'form-control '}))
-    ndi = forms.CharField(max_length=40, widget=forms.TextInput(attrs={'class': 'form-control '}))
+    ndi = forms.CharField(max_length=40, widget=forms.TextInput(attrs={'class': 'form-control maiuscula'}))
     residencia = forms.CharField(max_length=50, required=False, widget=forms.TextInput(attrs={'class': 'form-control'}))
     telefone = forms.CharField(max_length=30, widget=forms.TextInput(attrs={'class': 'form-control'}))
     email = forms.EmailField(max_length=180, required=False, widget=forms.TextInput(attrs={'class': 'form-control', }))
