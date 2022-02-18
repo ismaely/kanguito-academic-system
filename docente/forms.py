@@ -6,8 +6,8 @@ from config.views import gerarNumeroEstudante
 
 
 class Docente_Form(ModelForm):
+    pessoa = forms.CharField(max_length=10, required=False, widget=forms.TextInput(attrs={'class': 'form-control'}))
     class Meta:
-        pessoa = forms.CharField(max_length=10, required=False, widget=forms.TextInput(attrs={'class': 'form-control'}))
         model = Docente
         fields = ['numero_docente', 'categoria','grau_academico', 'data_registro', 'estado']
         widgets = {

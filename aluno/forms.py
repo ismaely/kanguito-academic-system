@@ -34,7 +34,7 @@ class Aluno_Form(ModelForm):
 
 
 class Matricula_Form(ModelForm):
-    aluno = forms.CharField(max_length=20, required=False, widget=forms.TextInput(attrs={'class': 'form-control'}))
+    aluno = forms.CharField(max_length=20, required=False, widget=forms.TextInput(attrs={'class': 'form-control maiuscula'}))
     class Meta: 
         model = Matricula
         fields = ['curso', 'opcao_matricula', 'ano', 'tremestre','periodo','nota_exame','dataMatricula']
@@ -50,7 +50,7 @@ class Matricula_Form(ModelForm):
 
 
 class Reclamacao_Form(ModelForm):
-    aluno = forms.CharField(max_length=20, required=False, widget=forms.TextInput(attrs={'class': 'form-control'}))
+    aluno = forms.CharField(max_length=20, required=False, widget=forms.TextInput(attrs={'class': 'form-control maiuscula'}))
     class Meta:
         model = Reclamacao
         fields = ['curso', 'motivo', 'data_reclamacao', 'descricao']
@@ -73,7 +73,7 @@ class Reclamacao_Form(ModelForm):
 
 
 class Confirmar_Matricula_Form(ModelForm):
-    aluno = forms.CharField(max_length=10, required=False, widget=forms.TextInput(attrs={'class': 'form-control'}))
+    aluno = forms.CharField(max_length=20, required=False, widget=forms.TextInput(attrs={'class': 'form-control maiuscula'}))
     tremestre = forms.CharField(max_length=60,required=False,  widget=forms.Select(choices="", attrs={'class': 'form-control ajax_tremestre'}))
     cadeiras_atraso = forms.CharField(max_length=60,required=False,  widget=forms.Select(choices="", attrs={'class': 'form-control ajax_cadeiras_atraso'}))
     class Meta:
