@@ -2,7 +2,7 @@
  * @author [Gunza Ismael]
  * @email [7ilip@gmail.com]
  * @create date 2021-10-15 00:59:34
- * @modify date 2022-02-10 08:18:15
+ * @modify date 2022-02-10 12:22:54
  * @desc [description]
  */
 
@@ -113,6 +113,7 @@ $(document).ready(function () {
                 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
             },
             success: function (data) {
+                console.log(data)
                 var tremestre = document.getElementById("id_tremestre");
                 var cont = 1;
                 while (tremestre.options.length) {
