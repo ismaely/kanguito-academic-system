@@ -75,7 +75,7 @@ class Confirmar_Matricula(models.Model):
     tremestre = models.ForeignKey(Tremestre, on_delete=models.CASCADE, blank=True, null=True, parent_link=True)
     data_confirmacao = models.DateField(default=timezone.now)
     periodo = models.ForeignKey(Periodo, on_delete=models.SET_NULL, blank=True, null=True, parent_link=True)
-    cadeiras_atraso = models.ManyToManyField(UnidadeCurricular_Curso,  blank=True, null=True)
+    #cadeiras_atraso = models.ManyToManyField(UnidadeCurricular_Curso,  blank=True, null=True)
     responsavel = models.CharField(max_length=190, blank=True, null=True)
     numero_recibo = models.CharField(max_length=15, blank=True, null=True)
     created = models.DateField(auto_now=True)

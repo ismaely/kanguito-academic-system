@@ -31,9 +31,9 @@ def efectuar_reclamacao(request):
     return render(request, 'aluno/efecturReclamacao.html', context)
 
 
-"""
-[FUNÇÃO QUE VAI FAZER A CONFIRMAÇÃO DE MATRICULA DO ESTUDANTE]
-"""
+
+# [FUNÇÃO QUE VAI FAZER A CONFIRMAÇÃO DE MATRICULA DO ESTUDANTE]
+
 def confirmacao_matricula(request):
     form = Confirmar_Matricula_Form(request.POST or None)
     if request.method == 'POST':
