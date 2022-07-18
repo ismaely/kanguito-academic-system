@@ -2,7 +2,7 @@
 @author [Gunza Ismael]
 @email [7ilip@gmail.com]
 @create date 2021-09-26 12:33:38
-@modify date 2022-02-09 17:25:14
+@modify date 2022-07-17 15:02:09
 @desc [description]
 -->
 
@@ -97,13 +97,13 @@
                   <a href="javascript:void(0)"><i class="ik ik-layers"></i><span></span> </a>
                   <div class="submenu-content">
                     <a href="{% url 'aluno:adicionarNovoCadastro-aluno' %}" class="menu-item">Novo cadastro do Aluno</a>
-                    
+
                     <a href="{% url 'aluno:confirmacao-matricula' %}" class="menu-item">Confirmação de Matricula</a>
                      <a href="{% url 'aluno:efectuar-reclamacao' %}" class="menu-item">Efectuar Reclamação</a>
                      <a href="{% url 'aluno:listar-reclamacao' %}" class="menu-item">Listar Reclamação Solicitadas</a>
                     <a href="{% url 'curso:adicionarNovo-cursos' %}" class="menu-item">Adicionar novo Curso</a>
                     <a href="{% url 'curso:listar-cursos' %}" class="menu-item">Listar Cursos</a>
-                     
+
                     </div>
                 </div>
                 <div class="nav-lavel">BIBILOTECA</div>
@@ -113,7 +113,7 @@
                     <a href="{% url 'biblioteca:adicionarNova-obraLiteraria' %}" class="menu-item">Adicionar nova obra Literária</a>
                     <a href="{% url 'biblioteca:listar-obras' %}"" class="menu-item">Solicitar Empresto de Obras</a>
                     <a href="{% url 'biblioteca:listar-obras' %}"" class="menu-item">Listar Obras Literária</a>
-                    <a href="{% url 'biblioteca:consulta-obra' %}" class="menu-item">Consultar Obra Literária</a> 
+                    <a href="{% url 'biblioteca:consulta-obra' %}" class="menu-item">Consultar Obra Literária</a>
                   </div>
                 </div>
 
@@ -135,7 +135,7 @@
                     <a href="{% url 'unidade_curricular:listar-unidadeCurricular' %}" class="menu-item">Listar Unidades Curricular</a>
                     <a href="{% url 'unidade_curricular:definir-unidadeCurricular-curso' %}" class="menu-item">Definir Unidade </br> Curricular do Curso</a>
                     <a href="{% url 'unidade_curricular:listarUnidadeCurricular-cada-curso' %}" class="menu-item">Listar as Unidade </br> Curricular do Curso</a>
-                    <a href="#" class="menu-item">Consultar Unidades Curricular</a>
+                    <a href="{% url 'unidade_curricular:consultarUnidadeCurricular' %}" class="menu-item">Consultar Unidades Curricular</a>
                     <a href="#" class="menu-item">Efetuar Lançamento de Nota</a>
                     <a href="#" class="menu-item">Consultar Nota</a>
                   </div>

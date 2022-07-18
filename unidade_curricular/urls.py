@@ -11,4 +11,5 @@ urlpatterns = [
     path('editarUnidadeCurricular/<int:pk>/', views.editarUnidadeCurricular, name= "editar-UnidadeCurricular"),
     path('definir_unidadeCurricular_curso/', views.definir_unidadeCurricular_curso, name= "definir-unidadeCurricular-curso"),
     path('listarUnidadeCurricular_cada_curso/', views.listarUnidadeCurricular_cada_curso, name= "listarUnidadeCurricular-cada-curso"),
+    path('consultarUnidade_curricular/', views.consultarUnidadeCurricular, name= "consultarUnidadeCurricular"),
 ]

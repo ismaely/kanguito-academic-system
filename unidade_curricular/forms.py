@@ -37,3 +37,13 @@ class listarUnidadeCurricular_cada_curso_Form(ModelForm):
         widgets = {
             'curso': forms.Select(attrs={'class': 'form-control'}),
         }
+
+
+
+class ConsultarUnidadeCurricular_Form(ModelForm):
+    class Meta:
+        model =  UnidadeCurricular
+        fields = ('nome','sigla',)
+        widgets = {
+            'nome': forms.Select(attrs={'class': 'form-control'}),
+        }

@@ -1,11 +1,24 @@
+import re
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 import sweetify
 from unidade_curricular.models import UnidadeCurricular, UnidadeCurricular_Curso
-from unidade_curricular.forms import (UnidadeCurricularForm, UnidadeCurricular_Curso_Form, listarUnidadeCurricular_cada_curso_Form)
+from unidade_curricular.forms import (UnidadeCurricularForm, UnidadeCurricular_Curso_Form, listarUnidadeCurricular_cada_curso_Form, 
+ConsultarUnidadeCurricular_Form)
 # Create your views here.
 
+
+def consultarUnidadeCurricular(request):
+    form = ConsultarUnidadeCurricular_Form(request.POST or None)
+    if request.method == 'POST':
+        nome == request.POST.get('nome')
+        print(nome)
+        lista = UnidadeCurricular_Curso.objects.select_related('curso').filter(unidade_curricular_id=nome).order_by('-id')
+        context = {'lista':lista}  
+        return render (request, 'unidadeCurricular/lista_unidadeCada_curso.html', context)
+    context = {'form':form}
+    return render (request, 'unidadeCurricular/consultarUnidadeCurricular.html', context)
 
 
 def listarUnidadeCurricular(request):
@@ -26,6 +39,7 @@ def listarUnidadeCurricular_cada_curso(request):
         return render (request, 'unidadeCurricular/lista_unidadeCada_curso.html', context)
     context = {'form':form}
     return render (request, 'unidadeCurricular/forms_listar_unidadeCurso.html', context)
+
 
 
 # Editar dados da unidade curricular 

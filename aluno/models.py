@@ -88,6 +88,21 @@ class Confirmar_Matricula(models.Model):
         return self.id
 
 
+class CadeirasAtraso(models.Model):
+    aluno = models.ForeignKey(Confirmar_Matricula, on_delete=models.CASCADE, parent_link=True)
+    ano = models.ForeignKey(Ano, on_delete=models.CASCADE, blank=True, null=True, parent_link=True)
+    tremestre = models.ForeignKey(Tremestre, on_delete=models.CASCADE, blank=True, null=True, parent_link=True)
+    #cadeiras_atraso = models.ManyToManyField(UnidadeCurricular_Curso,  blank=True, null=True)
+    responsavel = models.CharField(max_length=190, blank=True, null=True)
+    created = models.DateField(auto_now=True)
+    updated = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ["-aluno"]
+
+    def __str__ (self):
+        return self.id
+
 """class Orientacao_Tcc(models.Model):
     aluno = models.ForeignKey(Aluno, on_delete=models.CASCADE, parent_link=True)
     curso = models.ForeignKey(Curso, on_delete=models.CASCADE, parent_link=True)
