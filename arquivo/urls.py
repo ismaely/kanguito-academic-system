@@ -7,6 +7,7 @@ app_name = 'arquivo'
 
 urlpatterns = [
   path('registar_arquivos/', views.registar_arquivos, name='registar-arquivos'),
+  path('consultarArquivos/', views.consultarArquivos, name='consultar_arquivos'),
   path('atualizar_arquivos/<int:pk>/', views.atualizar_arquivos, name='atualizar-arquivos'),
   path('listar_arquivos/', views.listar_arquivos, name='listar-arquivos'),
   path('atualizar_arquivos/<int:pk>/', views.atualizar_arquivos, name='atualizar-arquivos'),

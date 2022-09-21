@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.http import HttpResponseRedirect, JsonResponse, FileResponse, HttpResponse
+from django.http import HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login, logout
 from django.db.models import Q
@@ -8,6 +8,9 @@ import  sweetify, os
 from django.conf import settings
 from arquivo.models import Arquivo, Tipologia
 from arquivo.forms import Arquivo_Form, ConsultarForm
+
+
+
 
 
 #@login_required
@@ -43,16 +46,16 @@ def eliminar_arquivos(request, pk):
 
 
 #@login_required
-def procura_arquivos(request):
+def consultarArquivos(request):
     form = ConsultarForm(request.POST or None)
     if request.method == "POST":
-        nome = request.POST['nome'].upper()
+        nome = request.POST.get('nome')
         lista = Arquivo.objects.filter(Q(titulo__contains=nome) | Q(autor__contains=nome))
         context = {'lista': lista}
         return render (request, 'arquivos/listar_arquivos.html', context)
 
     context = {'form': form}
-    return render (request, 'arquivos/procura_arquivos.html', context)
+    return render (request, 'arquivos/consultarArquivos.html', context)
 
 
 #@login_required

@@ -12,8 +12,6 @@ from curso.forms import Curso_Form, Curso
 
 
 
-
-
 #@login_required
 def listar_cursos(request):
     lista = Curso.objects.all().order_by('id')

@@ -9,16 +9,18 @@ ConsultarUnidadeCurricular_Form)
 # Create your views here.
 
 
+
+
 def consultarUnidadeCurricular(request):
     form = ConsultarUnidadeCurricular_Form(request.POST or None)
     if request.method == 'POST':
         nome == request.POST.get('nome')
-        print(nome)
         lista = UnidadeCurricular_Curso.objects.select_related('curso').filter(unidade_curricular_id=nome).order_by('-id')
         context = {'lista':lista}  
         return render (request, 'unidadeCurricular/lista_unidadeCada_curso.html', context)
     context = {'form':form}
     return render (request, 'unidadeCurricular/consultarUnidadeCurricular.html', context)
+
 
 
 def listarUnidadeCurricular(request):
@@ -64,7 +66,7 @@ def  definir_unidadeCurricular_curso(request):
             form.save()
             sweetify.success(request, 'Inserida com sucesso!....', button='Ok', timer='3100', persistent="Close")
             form = UnidadeCurricular_Curso_Form()
-           
+            
     context = {'form':form}
     return render (request, 'unidadeCurricular/definir_unidadeCurricular_curso.html', context)
 
