@@ -1,7 +1,7 @@
 from django.db import models
 from django.utils import timezone
 from pessoa.models import Pessoa
-from config.models import Periodo
+from config.models import Periodo, Ano, Tremestre
 from unidade_curricular.models import UnidadeCurricular
 from curso.models import Curso
 
@@ -61,16 +61,18 @@ class Orientador(models.Model):
         return self.id
 
 
-"""class Unidade_Curricular_Docente(models.Model):
+class Unidade_Curricular_Docente(models.Model):
     docente= models.ForeignKey(Docente, on_delete=models.CASCADE, parent_link=True)
-    curso= models.ForeignKey(Docente, on_delete=models.CASCADE, parent_link=True)
+    curso= models.ForeignKey(Curso, on_delete=models.CASCADE, parent_link=True)
     unidadeCurricular = models.ForeignKey(UnidadeCurricular, on_delete=models.CASCADE, parent_link=True)
-    periodo = models.ForeignKey(Estado_Docente, on_delete=models.CASCADE, parent_link=True)
+    periodo = models.ForeignKey(Periodo, on_delete=models.CASCADE, parent_link=True)
     estado = models.ForeignKey(Estado_Docente, on_delete=models.CASCADE, parent_link=True)
-    ano = models.ForeignKey(Estado_Docente, on_delete=models.CASCADE, parent_link=True)
+    nivel_academico = models.ForeignKey(Ano, on_delete=models.CASCADE, parent_link=True)
+    ano_letivo = models.FileField(default=timezone.now().year)
+    tremestre = models.ForeignKey(Tremestre, on_delete=models.CASCADE, parent_link=True)
     data_registro = models.DateField(default=timezone.now)
     created = models.DateField(blank=True, null=True)
     updated = models.DateTimeField(auto_now_add=True)
 
     def __str__ (self):
-        return '%d'  % (self.id)"""
+        return '%d'  % (self.id)
