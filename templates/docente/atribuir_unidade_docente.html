@@ -1,0 +1,91 @@
+{% extends 'home_base.html' %}{% block corpo %}{% load static %}
+<div class="row">
+  <div class="col-md-1"></div>
+  <div class="col-md-9">
+    <div class="card" style="min-height: 484px">
+
+       
+        <div class="card-header">
+        <h3>Definir A unidade Curricular Do Docente </h3>
+      </div>
+      <div class="card-body">
+        <form class="forms-sample" action="{% url 'docente:atribuirUnidadeDocente' %}" method="POST" enctype="multipart/form-data">
+        
+               {% csrf_token %} {% autoescape on %}
+              <div class="row">
+                <div class="col-sm-6">
+                  <div class="form-group">
+                    <label for="" class="">Docente</label>
+                    {{ form.docente }}{{ form.docente.errors }}
+                  </div>
+                </div>
+                <div class="col-sm-6">
+                  <div class="form-group ">
+                    <label for="" class="">Curso</label>
+                    {{ form.curso }}{{ form.curso.errors }}
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-sm-6">
+                  <div class="form-group">
+                    <label for="" class="">Unidade Curricular</label>
+                    {{ form.unidadeCurricular }}{{ form.unidadeCurricular.errors }}
+                  </div>
+                </div>
+                <div class="col-sm-6">
+                  <div class="form-group ">
+                    <label for="" class="">Nivel Academico</label>
+                    {{ form.nivel_academico }}{{ form.nivel_academico.errors }}
+                    
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-sm-6">
+                  <div class="form-group">
+                    <label for="" class="">Periodo:</label>
+                    {{ form.periodo }}{{ form.periodo.errors }}
+                  </div>
+                </div>
+
+                <div class="col-sm-6">
+                  <div class="form-group ">
+                    <label for="" class="">Tremestre</label>
+                    {{ form.tremestre }}{{ form.tremestre.errors }}
+                  </div>
+                </div>
+
+                
+              </div>
+
+              <div class="row">
+                <div class="col-sm-6">
+                  <div class="form-group">
+                    <label for="" class="">Data de Entrada</label>
+                     {{ form.data_registro }}{{ form.data_registro.errors }}
+                  </div>
+                </div>
+                <div class="col-sm-6">
+                  <div class="form-group">
+                    <label for="" class="">Ano Letivo</label>
+                     {{ form.ano_letivo }}{{ form.ano_letivo.errors }}
+                  </div>
+                </div>
+                
+              </div>
+
+              <div class="form-group">
+                <div id="visitfromworld" style="width: 100%; height: 20px"></div>
+              </div>
+              <button type="submit" class="btn btn-primary mr-2" style="width: 40%; height: 38px">SALVAR</button>
+              {% endautoescape %}
+            </form>
+          </div>
+      </div>
+    </div>
+  </div>
+  {% endblock %}
+</div>

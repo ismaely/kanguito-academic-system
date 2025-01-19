@@ -90,12 +90,13 @@ WSGI_APPLICATION = 'kanguita.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
+        'ENGINE': 'mysql.connector.django',
+        #'ENGINE': 'django.db.backends.mysql',
         'NAME': 'bd_kanguita',
         'USER': 'root',
         'PASSWORD': '',
-        'HOST': '127.0.0.1',
-        'PORT': '3306',
+        'HOST': 'localhost',
+        'PORT': '3308',
         'OPTIONS': {
         'autocommit': True,
     },

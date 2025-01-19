@@ -6,7 +6,7 @@ from django.db.models import Q
 from docente.models import Docente, Orientador
 from pessoa.models import Pessoa
 from pessoa.forms import Pessoa_Form
-from docente.forms import Docente_Form, ConsultarForm, OrientadorFrom
+from docente.forms import Docente_Form, ConsultarForm, OrientadorFrom, atribuirUnidade_docenteForm
 from config.views import prepara_foto
 
 # Create your views here.
@@ -35,6 +35,19 @@ def abriCandidatura_Orientador_teseTcc(request, pk):
 
     sweetify.error(request,'solicitação invalida', button='Ok', timer='3100', persistent="Close")
     return HttpResponseRedirect(reverse('docente:listar-Orientador-teseTcc'))
+
+
+
+def atribuir_unidade_docente(request):
+    form = atribuirUnidade_docenteForm(request.POST or None)
+    if request.method =='POST':
+        if form.is_valid():
+            form.save()
+            sweetify.success(request, 'Atribuição realizada com sucesso!....', button='Ok', timer='3100', persistent="Close")
+            form = atribuirUnidade_docenteForm()
+        print(form.errors)
+    context = {'form': form}
+    return render (request, 'docente/atribuir_unidade_docente.html', context)
 
 
 def fecharCandidatura_Orientador_teseTcc(request, pk):

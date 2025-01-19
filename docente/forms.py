@@ -1,6 +1,6 @@
 from django import forms
 from django.forms import ModelForm
-from docente.models import Docente, Orientador
+from docente.models import Docente, Orientador, Unidade_Curricular_Docente
 from config.views import gerarNumeroEstudante
 
 
@@ -34,3 +34,21 @@ class OrientadorFrom(ModelForm):
 
 class ConsultarForm(forms.Form):
     nome = forms.CharField(max_length=100, widget=forms.TextInput(attrs={'class': 'form-control'}))
+
+
+class atribuirUnidade_docenteForm(ModelForm):
+    #ano_letivo = forms.CharField(max_length=20, required=False, widget=forms.TextInput(attrs={'class': 'form-control'}))
+    class Meta:
+        model = Unidade_Curricular_Docente
+        fields = ['docente','curso', 'unidadeCurricular','periodo', 'nivel_academico','ano_letivo', 'tremestre','data_registro']
+        widgets = {
+            'docente': forms.Select( attrs={'class': 'form-control '}),
+            'estado': forms.Select( attrs={'class': 'form-control '}),
+            'curso': forms.Select( attrs={'class': 'form-control '}),
+            'unidadeCurricular': forms.Select( attrs={'class': 'form-control '}),
+            'periodo': forms.Select( attrs={'class': 'form-control '}),
+            'ano_letivo': forms.TextInput(attrs={'class': 'form-control'}),
+            'tremestre': forms.Select( attrs={'class': 'form-control '}),
+            'nivel_academico': forms.Select( attrs={'class': 'form-control '}),
+            'data_registro': forms.DateInput(attrs={'type': 'date','class': 'form-control'}),
+        }

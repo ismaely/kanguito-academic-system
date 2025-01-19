@@ -2,7 +2,7 @@
 @author [Gunza Ismael]
 @email [7ilip@gmail.com]
 @create date 2021-09-26 12:33:38
-@modify date 2022-09-25 13:59:50
+@modify date 2022-09-25 14:47:49
 @desc [description]
 -->
 
@@ -162,7 +162,7 @@
                     <a href="{% url 'docente:listar-docente' %}" class="menu-item">Listar Docentes</a>
                     <a href="{% url 'docente:definirOrientador-tese' %}" class="menu-item">Definir Docente</br> Para Tese / TCC</a>
                     <a href="{% url 'docente:listar-Orientador-teseTcc' %}" class="menu-item">Listar Docentes Orientadores</a>
-                    <a href="pages/form-addon.html" class="menu-item">Atribuir Unidade <br> Curricular ao Docente</a>
+                    <a href="{% url 'docente:atribuirUnidadeDocente' %}" class="menu-item">Atribuir Unidade <br> Curricular ao Docente</a>
                     <!--<a href="pages/form-advance.html" class="menu-item">Consultar Docente</a>-->
                   </div>
                 </div>
